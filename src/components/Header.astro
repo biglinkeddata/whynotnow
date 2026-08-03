@@ -1,6 +1,7 @@
 ---
 import SocialIcons from './SocialIcons.astro';
 const nav = [
+  ['/', 'Home'],
   ['/episodes/', 'Episodes'],
   ['/guests/', 'Guests'],
   ['/about/', 'About'],
@@ -9,13 +10,10 @@ const nav = [
   ['/contact/', 'Contact'],
 ];
 const path = Astro.url.pathname;
+const isCurrent = (href) => (href === '/' ? path === '/' : path.startsWith(href));
 ---
 <header class="site-header">
   <div class="wrap bar">
-    <a class="logo-link" href="/">
-      <img src="/images/logo.svg" alt="Why Not Now? — home" width="220" height="47" />
-    </a>
-
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
       <span class="visually-hidden">Menu</span>
       <span class="burger" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -25,7 +23,7 @@ const path = Astro.url.pathname;
       <ul role="list">
         {nav.map(([href, label]) => (
           <li>
-            <a href={href} aria-current={path.startsWith(href) ? 'page' : undefined}>{label}</a>
+            <a href={href} aria-current={isCurrent(href) ? 'page' : undefined}>{label}</a>
           </li>
         ))}
         <li class="nav-cta"><a class="btn btn--magenta" href="/newsletter/">Join us</a></li>
@@ -36,26 +34,28 @@ const path = Astro.url.pathname;
 </header>
 
 <style>
+  /* Transparent header floating over the painted hero — no white strip. */
   .site-header {
-    background: var(--paper);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: transparent;
     color: var(--ink);
-    position: relative;
     z-index: 20;
   }
   .bar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 1rem;
     padding-block: 0.9rem;
   }
-  .logo-link { display: block; flex-shrink: 0; }
-  .logo-link img { width: clamp(150px, 30vw, 220px); height: auto; }
 
   .nav-toggle {
     display: grid;
     place-items: center;
-    background: none;
+    background: var(--yellow); /* solid chip so it reads on any paint behind it */
     border: 3px solid var(--ink);
     width: 3rem;
     height: 3rem;
