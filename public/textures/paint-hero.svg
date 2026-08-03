@@ -14,34 +14,50 @@
     </filter>
   </defs>
 
-  <rect width="1600" height="900" fill="#111111"/>
+  <rect width="1600" height="900" fill="#FFFFFF"/>
 
-  <!-- big magenta sweep -->
-  <g filter="url(#rough)" opacity="0.92">
-    <path d="M -80 640 C 300 520 520 700 900 560 C 1180 460 1360 560 1700 430 L 1700 640 C 1350 740 1150 640 880 720 C 560 810 260 700 -80 800 Z" fill="#E81F5C"/>
+  <!-- blue block top left, like the artwork -->
+  <g filter="url(#rough)" opacity="0.95">
+    <path d="M -80 60 C 200 -20 420 120 560 40 L 600 300 C 420 400 180 300 -80 380 Z" fill="#1E50B0"/>
   </g>
-  <!-- yellow slash top right -->
+  <!-- yellow behind/around the blue -->
   <g filter="url(#rough2)" opacity="0.9">
-    <path d="M 980 40 C 1180 -20 1420 60 1660 -30 L 1680 150 C 1430 220 1240 130 1010 210 Z" fill="#F2B21C"/>
+    <path d="M -60 320 C 160 260 340 360 520 300 L 560 480 C 360 560 140 480 -60 540 Z" fill="#F2B21C"/>
+    <path d="M 60 -40 C 220 -80 380 0 520 -60 L 540 80 C 380 140 200 60 60 100 Z" fill="#F2B21C"/>
   </g>
-  <!-- blue block left -->
-  <g filter="url(#rough2)" opacity="0.85">
-    <path d="M -60 60 C 140 20 300 120 420 60 L 460 240 C 300 320 120 240 -60 300 Z" fill="#1E50B0"/>
+  <!-- big magenta field right, like the artwork -->
+  <g filter="url(#rough)" opacity="0.92">
+    <path d="M 1040 -60 C 1240 -120 1460 20 1700 -60 L 1700 560 C 1480 660 1260 540 1040 640 Z" fill="#E81F5C"/>
+  </g>
+  <!-- warm red-orange edge on the magenta -->
+  <g filter="url(#rough2)" opacity="0.75">
+    <path d="M 980 100 C 1100 40 1220 140 1340 80 L 1380 300 C 1240 380 1100 280 980 340 Z" fill="#F2B21C"/>
+  </g>
+  <!-- yellow sweep bottom -->
+  <g filter="url(#rough)" opacity="0.9">
+    <path d="M -80 760 C 300 680 700 820 1100 720 C 1350 660 1500 740 1700 680 L 1700 900 L -80 900 Z" fill="#F2B21C"/>
+  </g>
+  <!-- centre strip colour so narrow (mobile) crops still read as painted -->
+  <g filter="url(#rough2)" opacity="0.8">
+    <path d="M 560 -40 C 720 -80 900 20 1060 -50 L 1080 120 C 920 180 740 100 580 150 Z" fill="#F2B21C"/>
+  </g>
+  <g filter="url(#drybrush)" stroke-linecap="round">
+    <path d="M 580 200 C 720 175 860 215 1020 185" stroke="#1E50B0" stroke-width="13" fill="none" opacity="0.5"/>
+    <path d="M 600 420 C 740 395 880 440 1040 410" stroke="#E81F5C" stroke-width="11" fill="none" opacity="0.35"/>
   </g>
   <!-- dry-brush streaks -->
   <g filter="url(#drybrush)" stroke-linecap="round">
-    <path d="M 120 780 C 420 740 760 800 1080 750" stroke="#F2B21C" stroke-width="16" fill="none" opacity="0.55"/>
-    <path d="M 150 806 C 430 776 700 826 980 786" stroke="#F2B21C" stroke-width="7" fill="none" opacity="0.4"/>
-    <path d="M 1180 300 C 1320 260 1460 320 1620 270" stroke="#E81F5C" stroke-width="14" fill="none" opacity="0.5"/>
-    <path d="M 620 120 C 760 90 880 150 1010 110" stroke="#1E50B0" stroke-width="12" fill="none" opacity="0.5"/>
+    <path d="M 620 620 C 860 590 1060 650 1300 600" stroke="#E81F5C" stroke-width="16" fill="none" opacity="0.55"/>
+    <path d="M 660 654 C 880 628 1040 668 1240 634" stroke="#E81F5C" stroke-width="7" fill="none" opacity="0.4"/>
+    <path d="M 180 560 C 320 530 460 590 620 540" stroke="#1E50B0" stroke-width="12" fill="none" opacity="0.5"/>
   </g>
   <!-- splatter -->
-  <g fill="#F2B21C" filter="url(#rough2)">
-    <circle cx="1220" cy="620" r="12"/><circle cx="1290" cy="580" r="6"/><circle cx="1180" cy="680" r="8"/>
+  <g fill="#1E50B0" filter="url(#rough2)" opacity="0.85">
+    <circle cx="700" cy="180" r="12"/><circle cx="770" cy="140" r="6"/><circle cx="660" cy="250" r="8"/>
   </g>
-  <g fill="#E81F5C" filter="url(#rough)">
-    <circle cx="380" cy="260" r="10"/><circle cx="450" cy="220" r="5"/><circle cx="330" cy="330" r="6"/>
+  <g fill="#E81F5C" filter="url(#rough)" opacity="0.85">
+    <circle cx="920" cy="700" r="10"/><circle cx="990" cy="660" r="5"/><circle cx="870" cy="760" r="6"/>
   </g>
-  <!-- keep the centre darker so outlined type stays legible -->
-  <rect width="1600" height="900" fill="#111111" opacity="0.32"/>
+  <!-- soften with white so type stays the loudest thing on the page -->
+  <rect width="1600" height="900" fill="#FFFFFF" opacity="0.2"/>
 </svg>

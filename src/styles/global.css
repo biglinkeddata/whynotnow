@@ -11,6 +11,7 @@
   --yellow: #f2b21c;
   --blue: #1e50b0;
   --gold: #c99a4e;
+  --red: #e42418; /* the exclamation-mark red from the logo — logo & small accents only */
 
   --font-display: 'Anton', 'Arial Narrow', sans-serif;
   --font-marker: 'Permanent Marker', cursive;
@@ -38,8 +39,8 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--paper);
+  color: var(--ink);
   font-family: var(--font-body);
   font-size: 1.0625rem;
   line-height: 1.65;
@@ -55,11 +56,11 @@ p:last-child { margin-bottom: 0; }
 ::selection { background: var(--magenta); color: var(--paper); }
 
 :focus-visible {
-  outline: 3px solid var(--yellow);
+  outline: 3px solid var(--blue);
   outline-offset: 3px;
 }
-.on-paper :focus-visible, .section--paper :focus-visible {
-  outline-color: var(--blue);
+.section--ink :focus-visible, .section--magenta :focus-visible, .section--blue :focus-visible {
+  outline-color: var(--yellow);
 }
 
 .skip-link {
@@ -168,25 +169,26 @@ p:last-child { margin-bottom: 0; }
 .section--magenta { background: var(--magenta); color: var(--paper); }
 .section--blue { background: var(--blue); color: var(--paper); }
 
+/* Painted sections are bright: paint over white, ink type on top. */
 .section--painted {
-  background-color: var(--ink);
+  background-color: var(--paper);
   background-image: url('/textures/paint-hero.svg');
   background-size: cover;
   background-position: center;
-  color: var(--paper);
+  color: var(--ink);
 }
 .section--painted-band {
-  background-color: var(--ink);
+  background-color: var(--paper);
   background-image: url('/textures/paint-band.svg');
   background-size: cover;
   background-position: center;
-  color: var(--paper);
+  color: var(--ink);
 }
 /* Small text never relies on texture alone: mute the paint further
    wherever a painted band carries body copy (e.g. the footer). */
 .section--painted-band.texture-quiet {
   background-image:
-    linear-gradient(rgba(17, 17, 17, 0.62), rgba(17, 17, 17, 0.62)),
+    linear-gradient(rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.72)),
     url('/textures/paint-band.svg');
 }
 
@@ -240,14 +242,12 @@ p:last-child { margin-bottom: 0; }
 .btn--yellow { background: var(--yellow); color: var(--ink); }
 .btn--paper { background: var(--paper); color: var(--ink); }
 
-/* On ink backgrounds the shadow needs to read against black. */
-.section--ink .btn, .section--painted .btn, .section--painted-band .btn,
-.section--magenta .btn, .section--blue .btn {
+/* On dark/saturated backgrounds the shadow needs to read against the fill. */
+.section--ink .btn, .section--magenta .btn, .section--blue .btn {
   border-color: var(--paper);
   box-shadow: 0.28em 0.28em 0 rgba(255 255 255 / 0.92);
 }
-.section--ink .btn:hover, .section--painted .btn:hover,
-.section--magenta .btn:hover, .section--blue .btn:hover {
+.section--ink .btn:hover, .section--magenta .btn:hover, .section--blue .btn:hover {
   box-shadow: 0.45em 0.45em 0 rgba(255 255 255 / 0.92);
 }
 
@@ -377,10 +377,11 @@ p:last-child { margin-bottom: 0; }
    -------------------------------------------------------------------------- */
 
 .player {
-  border: 3px solid currentColor;
+  border: 3px solid var(--ink);
   padding: 1rem;
-  background: var(--ink); /* solid backdrop — small text never sits on texture */
-  color: var(--paper);
+  background: var(--paper); /* solid backdrop — small text never sits on texture */
+  color: var(--ink);
+  box-shadow: 0.35em 0.35em 0 var(--ink);
 }
 .player audio { width: 100%; display: block; }
 
