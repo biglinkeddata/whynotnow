@@ -1,7 +1,7 @@
 ---
 name: "Chloe Everton"
 role: "Co-host"
-photo: "/images/placeholder-chloe.svg"
+photo: "/images/chloe.jpg"
 order: 2
 shortBio: "Broadcaster, interviewer, professional asker of the question you were thinking but didn't say out loud. Knows a good story when she hears one — and how to get it told properly."
 ---

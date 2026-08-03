@@ -42,9 +42,11 @@ Everything an editor touches lives in **`/content`**:
    fields, update `public/__forms.html` to match.
 4. **Socials**: flip `live: true` per platform as each account launches —
    buttons and icons appear automatically.
-5. **Imagery**: replace the marked placeholder SVGs in `public/images/`
-   (hosts, guests, hero) and `public/press/` with real photography and the
-   final logo. Keep the same filenames or update the paths in `/content`.
+5. **Imagery**: host photos, cover art and the stacked logo are the real
+   Canva exports (in `public/images/`). Still placeholder: guest photos
+   (add real ones per guest in `content/guests/`) and the horizontal
+   header wordmark (`public/images/logo.svg`, drawn to match the brand —
+   swap in a real export if one is made).
 
 ## Where things live
 

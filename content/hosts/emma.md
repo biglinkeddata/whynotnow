@@ -1,7 +1,7 @@
 ---
 name: "Emma Elston MBE"
 role: "Co-host"
-photo: "/images/placeholder-emma.svg"
+photo: "/images/emma.jpg"
 order: 1
 shortBio: "Founder, straight talker, serial reinventor. Built a business from a single idea and an overdraft, picked up an MBE along the way, and still thinks the best chapter is the next one."
 ---

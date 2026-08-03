@@ -19,17 +19,15 @@ import { site, hosts } from '../lib/content.js';
       <div class="press-grid">
         <section class="press-block">
           <h2 class="display display--md"><span class="swash">Logos</span></h2>
-          <p class="placeholder-note">Placeholder wordmark — final logo files will replace these.</p>
-          <div class="press-logo-preview"><img src="/images/logo.svg" alt="Why Not Now? wordmark" width="340" height="72" /></div>
+          <div class="press-logo-preview"><img src="/images/logo-stacked.png" alt="Why Not Now! stacked logo" width="300" height="341" /></div>
           <ul class="starlist">
-            <li><a href="/press/whynotnow-logo.svg" download>Logo — SVG (vector)</a></li>
-            <li><a href="/images/logo.svg" download>Wordmark — SVG (vector)</a></li>
+            <li><a href="/images/logo-stacked.png" download>Logo — PNG (transparent background)</a></li>
+            <li><a href="/images/cover-art.jpg" download>Podcast cover art — JPG</a></li>
           </ul>
         </section>
 
         <section class="press-block">
           <h2 class="display display--md"><span class="swash swash--yellow">Host photography</span></h2>
-          <p class="placeholder-note">Placeholder frames — approved photography coming with launch.</p>
           <div class="press-photos">
             {hosts.map((h) => <img src={h.photo} alt={`Photo of ${h.name}`} width="300" height="360" loading="lazy" />)}
           </div>
