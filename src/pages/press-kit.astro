@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, hosts } from '../lib/content.js';
+---
+<Base
+  title="Press Kit — Why Not Now?"
+  description="Official logos, host photography, biographies and show descriptions for Why Not Now? — the reinvention podcast with Emma Elston MBE and Chloe Everton."
+>
+  <section class="section section--painted-band">
+    <div class="wrap">
+      <p class="pill">Press kit</p>
+      <h1 class="display display--xl outlined">Everything you need</h1>
+      <p style="margin-top:1rem; font-size:1.1rem">Writing about us? Brilliant. Take what you need — it's all approved for press use.</p>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="wrap">
+      <div class="press-grid">
+        <section class="press-block">
+          <h2 class="display display--md"><span class="swash">Logos</span></h2>
+          <p class="placeholder-note">Placeholder wordmark — final logo files will replace these.</p>
+          <div class="press-logo-preview"><img src="/images/logo.svg" alt="Why Not Now? wordmark" width="340" height="72" /></div>
+          <ul class="starlist">
+            <li><a href="/press/whynotnow-logo.svg" download>Logo — SVG (vector)</a></li>
+            <li><a href="/images/logo.svg" download>Wordmark — SVG (vector)</a></li>
+          </ul>
+        </section>
+
+        <section class="press-block">
+          <h2 class="display display--md"><span class="swash swash--yellow">Host photography</span></h2>
+          <p class="placeholder-note">Placeholder frames — approved photography coming with launch.</p>
+          <div class="press-photos">
+            {hosts.map((h) => <img src={h.photo} alt={`Photo of ${h.name}`} width="300" height="360" loading="lazy" />)}
+          </div>
+          <ul class="starlist">
+            {hosts.map((h) => <li><a href={h.photo} download>{h.name} — photo</a></li>)}
+          </ul>
+        </section>
+      </div>
+
+      <section class="press-block">
+        <h2 class="display display--md">About the show</h2>
+        <h3 class="kicker" style="color:var(--magenta)">Short (elevator)</h3>
+        <p class="measure press-copy">{site.showDescriptionShort}</p>
+        <h3 class="kicker" style="color:var(--magenta)">Long</h3>
+        <p class="measure press-copy">{site.showDescriptionLong}</p>
+      </section>
+
+      <section class="press-block">
+        <h2 class="display display--md">Host biographies</h2>
+        <div class="cardgrid">
+          {hosts.map((h) => {
+            const Bio = h.Content;
+            return (
+              <div class="press-bio">
+                <h3 class="display display--md">{h.name}</h3>
+                <Bio />
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <section class="press-block">
+        <h2 class="display display--md">Press contact</h2>
+        <p>Interviews, comment, appearances: <a href={`mailto:${site.pressEmail}`} style="color:var(--magenta); font-weight:700">{site.pressEmail}</a></p>
+      </section>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .press-grid { display: grid; gap: 2.5rem; margin-bottom: 2.5rem; }
+  @media (min-width: 900px) { .press-grid { grid-template-columns: 1fr 1fr; } }
+  .press-block { border: 3px solid var(--ink); padding: 1.75rem; margin-bottom: 2.5rem; }
+  .press-grid .press-block { margin-bottom: 0; }
+  .press-block h2 { margin-bottom: 1rem; }
+  .press-logo-preview { background: var(--ink); padding: 1.5rem; margin: 1rem 0; }
+  .press-photos { display: flex; gap: 1rem; margin: 1rem 0; }
+  .press-photos img { width: 8.5rem; height: auto; border: 3px solid var(--ink); }
+  .press-copy { margin-bottom: 1.5rem; }
+  .press-bio h3 { margin-bottom: 0.5rem; }
+  .starlist a { color: var(--magenta); font-weight: 600; }
+</style>

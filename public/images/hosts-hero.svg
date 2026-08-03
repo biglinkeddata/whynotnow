@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" role="img" aria-label="Placeholder for a photo of hosts Emma Elston and Chloe Everton">
+  <defs>
+    <filter id="rough" x="-15%" y="-15%" width="130%" height="130%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02 0.06" numOctaves="3" seed="31" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="26" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <rect width="900" height="640" fill="#111111"/>
+  <g filter="url(#rough)">
+    <path d="M -40 470 C 240 400 620 520 940 430 L 940 640 L -40 640 Z" fill="#E81F5C"/>
+    <path d="M 560 30 C 700 -10 840 50 940 10 L 940 140 C 820 190 690 120 560 160 Z" fill="#F2B21C"/>
+    <path d="M -40 60 C 90 20 220 90 330 50 L 350 170 C 230 220 80 160 -40 200 Z" fill="#1E50B0"/>
+  </g>
+  <g stroke="#FFFFFF" stroke-width="8" fill="none" stroke-linecap="round">
+    <circle cx="320" cy="290" r="85"/>
+    <path d="M 235 470 C 260 395 380 395 405 470"/>
+    <circle cx="580" cy="290" r="85"/>
+    <path d="M 495 470 C 520 395 640 395 665 470"/>
+  </g>
+  <text x="450" y="580" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="32" letter-spacing="5" fill="#FFFFFF">EMMA &amp; CHLOE — PHOTO TO COME</text>
+</svg>

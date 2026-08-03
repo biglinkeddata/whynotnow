@@ -1,0 +1,33 @@
+{
+  "_readme": "EDIT THIS FILE to update the site. No code knowledge needed. Keep the quotes and commas as they are. Anything starting with an underscore is a note for you, not shown on the site.",
+
+  "_rss": "Paste the podcast RSS feed URL below (from your podcast host, e.g. Buzzsprout/Acast/Spotify for Creators). While it is empty the site shows the pre-launch homepage automatically.",
+  "rssUrl": "",
+
+  "_trailer": "Optional. Paste an embed URL for the trailer (Spotify or YouTube embed link). Leave empty to hide.",
+  "trailerEmbedUrl": "",
+
+  "_kit": "Newsletter runs on Kit (ConvertKit). Paste your Kit form ID here — find it in Kit under Grow > Landing Pages & Forms > your form > Publish > HTML: it is the number in app.kit.com/forms/XXXXXXX/subscriptions.",
+  "kitFormId": "",
+
+  "_forms": "Contact / guest / sponsor forms post to this endpoint (e.g. a Formspree or Kit form endpoint). While empty, forms show a 'coming soon' note with the email address instead.",
+  "formEndpoint": "",
+
+  "contactEmail": "hello@whynotnowpod.com",
+  "pressEmail": "press@whynotnowpod.com",
+
+  "_social": "Set live to true as each platform launches. Buttons only appear when live is true.",
+  "social": {
+    "instagram": { "url": "https://instagram.com/whynotnowpod", "live": true },
+    "tiktok": { "url": "https://tiktok.com/@whynotnowpod", "live": true },
+    "youtube": { "url": "https://youtube.com/@whynotnowpod", "live": false },
+    "linkedin": { "url": "https://linkedin.com/company/whynotnowpod", "live": false },
+    "facebook": { "url": "https://facebook.com/whynotnowpod", "live": false },
+    "spotify": { "url": "", "live": false },
+    "applePodcasts": { "url": "", "live": false }
+  },
+
+  "showDescriptionShort": "Why Not Now? is a weekly interview podcast about reinvention, hosted by Emma Elston MBE and Chloe Everton. Real conversations with women who tore up the script and started again — in business, career, health and life.",
+
+  "showDescriptionLong": "It's not too late. It's YOUR time. Why Not Now? is a weekly interview podcast about reinvention, hosted by Emma Elston MBE and Chloe Everton. Every week they sit down with women who decided the life they had wasn't the life they wanted — and did something about it. New businesses started at 50. Careers walked away from. Health taken back. Relationships rebuilt. These are real conversations: funny when life is funny, emotional when it needs to be, always honest. Because this is more than a podcast. It's the start of a movement — women taking action now. For ourselves. For each other. For the future."
+}

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <filter id="rough" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.05" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="46" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="rough2" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03 0.012" numOctaves="3" seed="23" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="60" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="drybrush" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.09 0.007" numOctaves="4" seed="41" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="34" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="#111111"/>
+
+  <!-- big magenta sweep -->
+  <g filter="url(#rough)" opacity="0.92">
+    <path d="M -80 640 C 300 520 520 700 900 560 C 1180 460 1360 560 1700 430 L 1700 640 C 1350 740 1150 640 880 720 C 560 810 260 700 -80 800 Z" fill="#E81F5C"/>
+  </g>
+  <!-- yellow slash top right -->
+  <g filter="url(#rough2)" opacity="0.9">
+    <path d="M 980 40 C 1180 -20 1420 60 1660 -30 L 1680 150 C 1430 220 1240 130 1010 210 Z" fill="#F2B21C"/>
+  </g>
+  <!-- blue block left -->
+  <g filter="url(#rough2)" opacity="0.85">
+    <path d="M -60 60 C 140 20 300 120 420 60 L 460 240 C 300 320 120 240 -60 300 Z" fill="#1E50B0"/>
+  </g>
+  <!-- dry-brush streaks -->
+  <g filter="url(#drybrush)" stroke-linecap="round">
+    <path d="M 120 780 C 420 740 760 800 1080 750" stroke="#F2B21C" stroke-width="16" fill="none" opacity="0.55"/>
+    <path d="M 150 806 C 430 776 700 826 980 786" stroke="#F2B21C" stroke-width="7" fill="none" opacity="0.4"/>
+    <path d="M 1180 300 C 1320 260 1460 320 1620 270" stroke="#E81F5C" stroke-width="14" fill="none" opacity="0.5"/>
+    <path d="M 620 120 C 760 90 880 150 1010 110" stroke="#1E50B0" stroke-width="12" fill="none" opacity="0.5"/>
+  </g>
+  <!-- splatter -->
+  <g fill="#F2B21C" filter="url(#rough2)">
+    <circle cx="1220" cy="620" r="12"/><circle cx="1290" cy="580" r="6"/><circle cx="1180" cy="680" r="8"/>
+  </g>
+  <g fill="#E81F5C" filter="url(#rough)">
+    <circle cx="380" cy="260" r="10"/><circle cx="450" cy="220" r="5"/><circle cx="330" cy="330" r="6"/>
+  </g>
+  <!-- keep the centre darker so outlined type stays legible -->
+  <rect width="1600" height="900" fill="#111111" opacity="0.32"/>
+</svg>

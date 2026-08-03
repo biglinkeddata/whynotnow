@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 720" role="img" aria-label="Placeholder for Chloe Everton's photo">
+  <rect width="600" height="720" fill="#111111"/>
+  <path d="M -40 560 C 160 500 360 600 640 520 L 640 720 L -40 720 Z" fill="#1E50B0" opacity="0.9"/>
+  <path d="M -40 40 C 180 0 420 70 640 20 L 640 130 C 420 180 180 110 -40 150 Z" fill="#E81F5C" opacity="0.85"/>
+  <circle cx="300" cy="300" r="110" fill="none" stroke="#FFFFFF" stroke-width="8"/>
+  <path d="M 190 520 C 220 430 380 430 410 520" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+  <text x="300" y="640" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="30" letter-spacing="4" fill="#FFFFFF">CHLOE — PHOTO TO COME</text>
+</svg>

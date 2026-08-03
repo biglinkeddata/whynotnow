@@ -1,0 +1,89 @@
+---
+import Base from '../layouts/Base.astro';
+import QuoteGrid from '../components/QuoteGrid.astro';
+import EmailCapture from '../components/EmailCapture.astro';
+import { hosts, site } from '../lib/content.js';
+---
+<Base
+  title="About — Why Not Now?"
+  description="Meet Emma Elston MBE and Chloe Everton, and find out why Why Not Now? is more than a podcast — it's the start of a movement about reinvention."
+>
+  <section class="section section--painted">
+    <div class="wrap">
+      <p class="pill">About the show</p>
+      <h1 class="display display--hero outlined">Not a podcast.<br />A movement.</h1>
+      <p class="script" style="color:var(--yellow); margin-top:1.5rem">Well — also a podcast. A really good one.</p>
+    </div>
+  </section>
+
+  <section class="section section--paper fade-in">
+    <div class="wrap wrap--narrow">
+      <h2 class="display display--lg">Here's the thing about <span class="swash">"someday"</span></h2>
+      <p>It never comes. You know it. We know it. Everyone waiting for the kids to be older,
+      the mortgage to be smaller, the confidence to arrive — they know it too.</p>
+      <p>So this show asks one question, every single week, of women who stopped waiting:
+      <strong>why not now?</strong> What made you jump? What did it cost? What did it give you?
+      And what would you say to the woman listening on her commute, wondering if it's too late?</p>
+      <p>(Spoiler: it's not too late. It's YOUR time.)</p>
+      <ul class="starlist" style="margin-top:1.5rem">
+        <li>A new episode every week — honest, funny, occasionally teary.</li>
+        <li>Guests who reinvented their business, career, health, relationships or whole life.</li>
+        <li>One practical nudge at the end of every episode. Small step. Real momentum.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--ink fade-in">
+    <div class="wrap">
+      <p class="pill pill--tilt-r">Your hosts</p>
+      <h2 class="display display--lg" style="margin:0.75rem 0 1.75rem">Two friends, one question</h2>
+      <div class="about-hosts">
+        {hosts.map((h) => {
+          const Bio = h.Content;
+          return (
+            <article class="about-host">
+              <img src={h.photo} alt={`Photo of ${h.name}`} width="600" height="720" loading="lazy" />
+              <div>
+                <h3 class="display display--md">{h.name}</h3>
+                <div class="about-host-bio"><Bio /></div>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--yellow fade-in">
+    <div class="wrap">
+      <p class="pill">The manifesto</p>
+      <QuoteGrid />
+    </div>
+  </section>
+
+  <section class="section section--ink fade-in">
+    <div class="wrap wrap--narrow">
+      <h2 class="display display--lg">Where this is going</h2>
+      <p class="measure">The podcast is chapter one. Live events, a community of women
+      backing each other's next moves, partnerships with brands that get it — that's
+      the book. If you want in early:</p>
+      <div style="margin-top:1.5rem"><EmailCapture id="about" compact /></div>
+      <p style="margin-top:2rem">
+        Want to be part of it another way?
+        <a href="/become-a-guest/" style="color:var(--yellow); font-weight:700">Come on the show</a> or
+        <a href="/sponsor/" style="color:var(--yellow); font-weight:700">partner with us</a>.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .about-hosts { display: grid; gap: 2.5rem; }
+  .about-host { display: grid; gap: 1.5rem; }
+  .about-host img { border: 4px solid var(--paper); width: 100%; max-width: 24rem; }
+  .about-host h3 { margin: 0 0 0.75rem; }
+  .about-host-bio { font-size: 1rem; }
+  @media (min-width: 800px) {
+    .about-host { grid-template-columns: minmax(0, 20rem) 1fr; align-items: start; }
+  }
+</style>

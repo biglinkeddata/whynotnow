@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Placeholder guest photo">
+  <rect width="600" height="600" fill="#111111"/>
+  <path d="M -40 460 C 200 400 420 500 640 430 L 640 600 L -40 600 Z" fill="#F2B21C" opacity="0.9"/>
+  <circle cx="300" cy="250" r="95" fill="none" stroke="#FFFFFF" stroke-width="7"/>
+  <path d="M 205 440 C 235 360 365 360 395 440" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
+  <text x="300" y="545" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="28" letter-spacing="4" fill="#111111">PHOTO TO COME</text>
+</svg>

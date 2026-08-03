@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import SiteForm from '../components/SiteForm.astro';
+---
+<Base
+  title="Become a Guest — Why Not Now?"
+  description="Reinvented your business, career, health or life? Come and tell your story on Why Not Now? with Emma Elston MBE and Chloe Everton."
+>
+  <section class="section section--painted">
+    <div class="wrap">
+      <p class="pill">Become a guest</p>
+      <h1 class="display display--hero outlined">Tell your story</h1>
+      <p class="script" style="color:var(--yellow); margin-top:1.25rem">The one you've never been asked the right question about.</p>
+    </div>
+  </section>
+
+  <section class="section section--paper fade-in">
+    <div class="wrap wrap--narrow">
+      <h2 class="display display--lg">Who we're <span class="swash">looking for</span></h2>
+      <p>You don't need a book, a brand or a blue tick. You need a before, an after,
+      and the honesty to talk about the messy bit in the middle.</p>
+      <ul class="starlist">
+        <li>You made a real change — business, career, health, relationships or life.</li>
+        <li>You'll talk about the fear and the cost, not just the win.</li>
+        <li>You've got something practical to hand the listener who's still on the fence.</li>
+        <li>Bonus points if you can laugh about at least some of it.</li>
+      </ul>
+
+      <h2 class="display display--lg" style="margin-top:2.5rem">How it works</h2>
+      <ul class="starlist">
+        <li><strong>Apply below.</strong> Two minutes, no essay.</li>
+        <li><strong>Quick chat.</strong> If it feels like a fit, we set up a 15-minute call.</li>
+        <li><strong>Record.</strong> About an hour, remote or in person. Just a conversation.</li>
+        <li><strong>Share.</strong> We send you everything you need when your episode goes live.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--ink fade-in">
+    <div class="wrap wrap--narrow">
+      <h2 class="display display--lg" style="margin-bottom:1.5rem">Throw your hat in</h2>
+      <SiteForm name="become-a-guest" submitLabel="Send my story">
+        <div class="field">
+          <label for="bg-name">Your name</label>
+          <input id="bg-name" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="bg-email">Email</label>
+          <input id="bg-email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="bg-links">Where can we find you? (website or social)</label>
+          <input id="bg-links" name="links" type="text" />
+        </div>
+        <div class="field">
+          <label for="bg-story">Your reinvention, in a few sentences</label>
+          <textarea id="bg-story" name="story" rows="6" required placeholder="What did you change, and what pushed you to finally do it?"></textarea>
+        </div>
+      </SiteForm>
+    </div>
+  </section>
+</Base>

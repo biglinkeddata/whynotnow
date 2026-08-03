@@ -1,0 +1,11 @@
+{
+  "_readme": "Quote cards shown on the homepage and About page. 'panel' is the card colour: ink (black), yellow, magenta or blue. Keep lines short and punchy — they are set very large.",
+  "quotes": [
+    { "text": "Bold. Different. Unapologetic.", "panel": "ink" },
+    { "text": "It's not too late. It's YOUR time.", "panel": "yellow" },
+    { "text": "We'd rather be memorable than safe.", "panel": "ink" },
+    { "text": "Real conversations. Bold decisions.", "panel": "magenta" },
+    { "text": "Women taking action now. For ourselves. For each other. For the future.", "panel": "ink" },
+    { "text": "This is more than a podcast. It's the start of a movement.", "panel": "blue" }
+  ]
+}

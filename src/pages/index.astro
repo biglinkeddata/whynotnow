@@ -1,0 +1,232 @@
+---
+import Base from '../layouts/Base.astro';
+import EmailCapture from '../components/EmailCapture.astro';
+import SubscribeRow from '../components/SubscribeRow.astro';
+import Player from '../components/Player.astro';
+import EpisodeCard from '../components/EpisodeCard.astro';
+import GuestCard from '../components/GuestCard.astro';
+import QuoteGrid from '../components/QuoteGrid.astro';
+import SocialIcons from '../components/SocialIcons.astro';
+import { getFeed } from '../lib/feed.js';
+import { site, hosts, guests } from '../lib/content.js';
+
+const feed = await getFeed();
+const launched = feed.episodes.length > 0;
+const latest = feed.episodes[0];
+const recent = feed.episodes.slice(0, 3);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'PodcastSeries',
+  name: 'Why Not Now?',
+  description: site.showDescriptionShort,
+  url: 'https://whynotnowpod.com/',
+  ...(site.rssUrl ? { webFeed: site.rssUrl } : {}),
+};
+---
+<Base jsonLd={jsonLd}>
+  {launched ? (
+    <>
+    {/* LAUNCHED: latest episode is the hero */}
+    <section class="section section--painted hero">
+      <div class="wrap">
+        <p class="pill">Latest episode</p>
+        <h1 class="display display--xl outlined hero-title">{latest.title}</h1>
+        <div class="hero-player">
+          <Player episode={latest} />
+        </div>
+        <div class="hero-sub">
+          <SubscribeRow />
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper fade-in">
+      <div class="wrap">
+        <p class="pill">Recent episodes</p>
+        <h2 class="display display--lg section-head">Catch up. <span class="swash">Then catch fire.</span></h2>
+        <div class="cardgrid cardgrid--3">
+          {recent.map((ep) => <EpisodeCard episode={ep} />)}
+        </div>
+        <p class="section-more"><a class="btn btn--magenta" href="/episodes/">All episodes</a></p>
+      </div>
+    </section>
+    </>
+  ) : (
+    <>
+    {/* PRE-LAUNCH: the promise is the hero */}
+    <section class="section section--painted hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="marker hero-marker">Bold. Different. Unapologetic.</p>
+          <h1 class="display display--hero outlined">Why<br />Not<br />Now?</h1>
+          <p class="hero-promise">
+            A weekly podcast about reinvention with
+            <strong>Emma Elston MBE</strong> and <strong>Chloe Everton</strong>.
+            Real women. Real changes. No permission needed.
+          </p>
+          <form
+            class="capture-row hero-capture"
+            {...(site.kitFormId
+              ? { action: `https://app.kit.com/forms/${site.kitFormId}/subscriptions`, method: 'post', target: '_blank' }
+              : { onsubmit: 'return false' })}
+          >
+            <label class="visually-hidden" for="hero-email">Email address</label>
+            <input id="hero-email" type="email" name="email_address" autocomplete="email" required placeholder="you@example.com" />
+            <button class="btn btn--magenta" type="submit">Be first to listen</button>
+          </form>
+          <p class="script hero-script">It's not too late. It's YOUR time.</p>
+        </div>
+        <img class="hero-photo" src="/images/hosts-hero.svg" alt="Emma Elston and Chloe Everton — photo to come" width="900" height="640" />
+      </div>
+    </section>
+
+    {site.trailerEmbedUrl && (
+      <section class="section section--ink fade-in">
+        <div class="wrap">
+          <p class="pill">The trailer</p>
+          <div class="trailer-frame">
+            <iframe
+              src={site.trailerEmbedUrl}
+              title="Why Not Now? trailer"
+              loading="lazy"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    )}
+    </>
+  )}
+
+  <section class={`section ${launched ? 'section--ink' : 'section--paper'} fade-in`}>
+    <div class="wrap">
+      <p class="pill">The vibe</p>
+      <h2 class="display display--lg section-head">This is more than a podcast.</h2>
+      <div class="vibe-grid">
+        <div class="measure">
+          <p>
+            Every week we sit down with women who looked at the life they had and said:
+            not this. Not any more. Women who started businesses at 50, walked out of
+            careers that looked perfect on paper, took their health back, started again.
+          </p>
+          <p>
+            It's funny when life is funny. It's emotional when it needs to be. It's
+            always honest. And it always ends the same way — with you wondering what
+            <em>your</em> next chapter looks like.
+          </p>
+        </div>
+        <ul class="starlist vibe-list">
+          <li><strong>Real conversations.</strong> Nobody's polished highlight reel.</li>
+          <li><strong>Bold decisions.</strong> The moment they jumped, and what happened next.</li>
+          <li><strong>Your move.</strong> Every episode ends with one thing you can do this week.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class={`section ${launched ? 'section--paper' : 'section--ink'} fade-in`}>
+    <div class="wrap">
+      <p class="pill pill--tilt-r">Your hosts</p>
+      <h2 class="display display--lg section-head">Emma &amp; Chloe</h2>
+      <div class="cardgrid">
+        {hosts.map((h) => (
+          <article class="host-card">
+            <img src={h.photo} alt={`Photo of ${h.name}`} width="600" height="720" loading="lazy" />
+            <div class="host-body">
+              <h3 class="display display--md">{h.name}</h3>
+              <p>{h.shortBio}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p class="section-more"><a class="btn btn--yellow" href="/about/">The full story</a></p>
+    </div>
+  </section>
+
+  {launched && guests.length > 0 && (
+    <section class="section section--ink fade-in">
+      <div class="wrap">
+        <p class="pill">Guests</p>
+        <h2 class="display display--lg section-head">Women who <span class="swash swash--yellow">jumped</span></h2>
+        <div class="cardgrid cardgrid--3">
+          {guests.slice(0, 3).map((g) => <GuestCard guest={g} />)}
+        </div>
+        <p class="section-more"><a class="btn btn--paper" href="/guests/">Meet them all</a></p>
+      </div>
+    </section>
+  )}
+
+  <section class="section section--yellow fade-in">
+    <div class="wrap">
+      <p class="pill">Say it louder</p>
+      <QuoteGrid limit={launched ? 6 : 4} />
+    </div>
+  </section>
+
+  <section class="section section--ink fade-in">
+    <div class="wrap">
+      <EmailCapture id="home" />
+      {!launched && (
+        <div class="follow-block">
+          <p class="kicker follow-label">Follow along</p>
+          <SocialIcons />
+        </div>
+      )}
+    </div>
+  </section>
+
+  {launched && (
+    <section class="section section--blue fade-in">
+      <div class="wrap sponsor-teaser">
+        <div>
+          <h2 class="display display--lg">Put your brand in the room.</h2>
+          <p class="measure">
+            Our listeners are women making big decisions — about money, work, health
+            and what comes next. If your brand belongs in that conversation, let's talk.
+          </p>
+        </div>
+        <a class="btn btn--yellow" href="/sponsor/">Sponsor the podcast</a>
+      </div>
+    </section>
+  )}
+</Base>
+
+<style>
+  .hero { padding-block: clamp(4rem, 12vw, 8rem); }
+  .hero-marker { font-size: clamp(1.3rem, 4vw, 2rem); color: var(--yellow); margin: 0 0 0.5rem; transform: rotate(-1.5deg); }
+  .hero-title { margin-top: 1rem; }
+  .hero-promise { max-width: 34ch; font-size: 1.15rem; margin: 1.5rem 0; }
+  .hero-capture { max-width: 34rem; margin-bottom: 1.25rem; }
+  .hero-script { color: var(--yellow); }
+  .hero-player { margin-top: 2rem; }
+  .hero-sub { margin-top: 1.5rem; }
+  .hero-grid { display: grid; gap: 2.5rem; align-items: center; }
+  .hero-photo { border: 4px solid var(--paper); }
+  @media (min-width: 900px) {
+    .hero-grid { grid-template-columns: 1.1fr 0.9fr; }
+  }
+
+  .section-head { margin: 0.75rem 0 1.75rem; }
+  .section-more { margin-top: 2rem; }
+
+  .vibe-grid { display: grid; gap: 2rem; }
+  .vibe-list { font-size: 1.05rem; }
+  @media (min-width: 900px) { .vibe-grid { grid-template-columns: 1.2fr 1fr; } }
+
+  .host-card { border: 3px solid currentColor; }
+  .host-card img { width: 100%; aspect-ratio: 5 / 6; object-fit: cover; }
+  .host-body { padding: 1.25rem; }
+  .host-body h3 { margin: 0 0 0.5rem; }
+  .host-body p { margin: 0; font-size: 0.98rem; }
+
+  .trailer-frame { aspect-ratio: 16 / 9; max-width: 52rem; margin-top: 1.5rem; }
+  .trailer-frame iframe { width: 100%; height: 100%; border: 4px solid var(--paper); }
+
+  .follow-block { margin-top: 2.5rem; }
+  .follow-label { color: var(--yellow); margin-bottom: 0.75rem; }
+
+  .sponsor-teaser { display: grid; gap: 1.5rem; align-items: center; }
+  .sponsor-teaser h2 { margin-bottom: 0.5em; }
+  @media (min-width: 900px) { .sponsor-teaser { grid-template-columns: 1fr auto; } }
+</style>

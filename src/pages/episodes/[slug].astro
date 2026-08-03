@@ -1,0 +1,141 @@
+---
+import Base from '../../layouts/Base.astro';
+import Player from '../../components/Player.astro';
+import SubscribeRow from '../../components/SubscribeRow.astro';
+import EmailCapture from '../../components/EmailCapture.astro';
+import EpisodeCard from '../../components/EpisodeCard.astro';
+import { getFeed } from '../../lib/feed.js';
+import { episodeNotes, guestById, site } from '../../lib/content.js';
+
+const { slug } = Astro.params;
+const feed = await getFeed();
+const episode = feed.episodes.find((e) => e.slug === slug);
+if (!episode) return Astro.redirect('/episodes/', 302);
+
+const notes = episodeNotes.get(episode.slug);
+const guest = notes?.guest ? guestById.get(notes.guest) : null;
+const GuestBio = guest?.Content;
+const ExtraNotes = notes?.Content;
+
+const others = feed.episodes.filter((e) => e.slug !== episode.slug).slice(0, 3);
+const dateStr = episode.date
+  ? new Date(episode.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+  : '';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'PodcastEpisode',
+  name: episode.title,
+  url: `https://whynotnowpod.com/episodes/${episode.slug}/`,
+  ...(episode.date ? { datePublished: episode.date } : {}),
+  ...(episode.episodeNumber ? { episodeNumber: episode.episodeNumber } : {}),
+  description: episode.excerpt,
+  associatedMedia: { '@type': 'MediaObject', contentUrl: episode.audioUrl },
+  partOfSeries: { '@type': 'PodcastSeries', name: 'Why Not Now?', url: 'https://whynotnowpod.com/' },
+};
+---
+<Base
+  title={`${episode.title} — Why Not Now?`}
+  description={episode.excerpt || site.showDescriptionShort}
+  ogType="article"
+  ogImage={episode.image || '/images/og-default.png'}
+  jsonLd={jsonLd}
+>
+  <article>
+    <header class="section section--painted-band">
+      <div class="wrap">
+        <p class="ep-top-meta">
+          {episode.episodeNumber && <span class="ep-num">Episode {episode.episodeNumber}</span>}
+          {dateStr && <time datetime={episode.date}>{dateStr}</time>}
+          {episode.duration && <span>{episode.duration}</span>}
+        </p>
+        <h1 class="display display--xl outlined">{episode.title}</h1>
+        <div class="ep-hero-player"><Player episode={episode} label="Listen to this episode" /></div>
+        <div class="ep-hero-sub"><SubscribeRow /></div>
+      </div>
+    </header>
+
+    <div class="section section--paper">
+      <div class="wrap ep-body">
+        <div class="ep-main">
+          {notes?.takeaways?.length > 0 && (
+            <section class="ep-block">
+              <h2 class="display display--md"><span class="swash">Key takeaways</span></h2>
+              <ul class="starlist">
+                {notes.takeaways.map((t) => <li>{t}</li>)}
+              </ul>
+            </section>
+          )}
+
+          <section class="ep-block">
+            <h2 class="display display--md">Show notes</h2>
+            <div class="ep-notes" set:html={episode.descriptionHtml} />
+            {ExtraNotes && <div class="ep-notes"><ExtraNotes /></div>}
+          </section>
+
+          {notes?.links?.length > 0 && (
+            <section class="ep-block">
+              <h2 class="display display--md">Links from this episode</h2>
+              <ul class="starlist">
+                {notes.links.map((l) => (
+                  <li><a href={l.url} target="_blank" rel="noopener">{l.label}</a></li>
+                ))}
+              </ul>
+            </section>
+          )}
+        </div>
+
+        {guest && (
+          <aside class="ep-guest-card">
+            <img src={guest.photo || '/images/placeholder-guest.svg'} alt={`Photo of ${guest.name}`} width="600" height="600" loading="lazy" />
+            <div class="ep-guest-body">
+              <p class="kicker" style="color:var(--magenta)">This week's guest</p>
+              <h2 class="display display--md">{guest.name}</h2>
+              <p>{guest.oneLiner}</p>
+              {GuestBio && <div class="ep-guest-bio"><GuestBio /></div>}
+            </div>
+          </aside>
+        )}
+      </div>
+    </div>
+
+    {others.length > 0 && (
+      <section class="section section--ink">
+        <div class="wrap">
+          <p class="pill">Keep listening</p>
+          <div class="cardgrid cardgrid--3" style="margin-top:1.5rem">
+            {others.map((ep) => <EpisodeCard episode={ep} />)}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <section class="section section--magenta">
+      <div class="wrap"><EmailCapture id="episode" heading="Loved this one? There's more." sub="One email a week. New episodes and honest stories, straight to you." /></div>
+    </section>
+  </article>
+</Base>
+
+<style>
+  .ep-top-meta {
+    display: flex; flex-wrap: wrap; gap: 1rem;
+    font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    margin: 0 0 1rem;
+  }
+  .ep-num { color: var(--yellow); }
+  .ep-hero-player { margin-top: 2rem; }
+  .ep-hero-sub { margin-top: 1.25rem; }
+
+  .ep-body { display: grid; gap: 2.5rem; }
+  @media (min-width: 960px) { .ep-body { grid-template-columns: 1.5fr 1fr; align-items: start; } }
+  .ep-block { margin-bottom: 2.5rem; }
+  .ep-block h2 { margin-bottom: 0.75rem; }
+  .ep-notes :global(a) { color: var(--magenta); font-weight: 600; }
+  .ep-notes :global(img) { max-width: 100%; height: auto; }
+
+  .ep-guest-card { border: 3px solid var(--ink); background: var(--paper); }
+  .ep-guest-card img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+  .ep-guest-body { padding: 1.5rem; }
+  .ep-guest-body h2 { margin: 0.25rem 0 0.5rem; }
+  .ep-guest-bio { font-size: 0.95rem; margin-top: 0.75rem; }
+</style>

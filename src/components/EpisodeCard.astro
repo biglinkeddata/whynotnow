@@ -1,0 +1,55 @@
+---
+const { episode, headingLevel = 'h3' } = Astro.props;
+const H = headingLevel;
+const date = episode.date
+  ? new Date(episode.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+  : '';
+---
+<article class="ep-card">
+  <p class="ep-meta">
+    {episode.episodeNumber && <span class="ep-num">EP {episode.episodeNumber}</span>}
+    {date && <time datetime={episode.date}>{date}</time>}
+    {episode.duration && <span>{episode.duration}</span>}
+  </p>
+  <H class="ep-title display display--md">
+    <a href={`/episodes/${episode.slug}/`}>{episode.title}</a>
+  </H>
+  {episode.excerpt && <p class="ep-excerpt">{episode.excerpt}</p>}
+  <a class="ep-listen" href={`/episodes/${episode.slug}/`}>Listen + show notes<span aria-hidden="true"> →</span></a>
+</article>
+
+<style>
+  .ep-card {
+    border: 3px solid currentColor;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    height: 100%;
+  }
+  .ep-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .ep-num { color: var(--magenta); }
+  .ep-title { margin: 0; }
+  .ep-title a { text-decoration: none; }
+  .ep-title a:hover { color: var(--magenta); }
+  .ep-excerpt { margin: 0; font-size: 0.95rem; }
+  .ep-listen {
+    margin-top: auto;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    color: var(--magenta);
+  }
+  .ep-listen:hover { text-decoration: underline; text-decoration-thickness: 3px; }
+</style>

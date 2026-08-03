@@ -1,0 +1,40 @@
+---
+// Newsletter signup wired to Kit (ConvertKit). Posts straight to Kit's
+// form endpoint — no bespoke email store. Until a form ID is set in
+// content/site.json this renders a clearly-marked placeholder.
+import { site } from '../lib/content.js';
+const {
+  heading = "It's your time. Get the newsletter.",
+  sub = 'One email a week. New episodes, honest stories, zero spam.',
+  compact = false,
+  id = 'email',
+} = Astro.props;
+const kitAction = site.kitFormId ? `https://app.kit.com/forms/${site.kitFormId}/subscriptions` : null;
+const inputId = `capture-${id}`;
+---
+<div class="capture">
+  {!compact && <h2 class="display display--md">{heading}</h2>}
+  {!compact && <p class="capture-sub">{sub}</p>}
+  {kitAction ? (
+    <form class="capture-row" action={kitAction} method="post" target="_blank">
+      <label class="visually-hidden" for={inputId}>Email address</label>
+      <input id={inputId} type="email" name="email_address" autocomplete="email" required placeholder="you@example.com" />
+      <button class="btn btn--magenta" type="submit">Count me in</button>
+    </form>
+  ) : (
+    <>
+    <form class="capture-row" onsubmit="return false">
+      <label class="visually-hidden" for={inputId}>Email address</label>
+      <input id={inputId} type="email" autocomplete="email" required placeholder="you@example.com" />
+      <button class="btn btn--magenta" type="submit">Count me in</button>
+    </form>
+    <p class="placeholder-note">Placeholder — add your Kit form ID in content/site.json to make this live.</p>
+    </>
+  )}
+</div>
+
+<style>
+  .capture h2 { margin-bottom: 0.4em; }
+  .capture-sub { margin-bottom: 1.2em; max-width: 40ch; }
+  .placeholder-note { margin-top: 0.6rem; }
+</style>

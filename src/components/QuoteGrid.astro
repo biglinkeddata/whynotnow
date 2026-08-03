@@ -1,0 +1,17 @@
+---
+import { quotes } from '../lib/content.js';
+const { limit } = Astro.props;
+const shown = limit ? quotes.slice(0, limit) : quotes;
+---
+<div class="quotegrid">
+  {shown.map((q) => (
+    <blockquote class={`quote-card quote-card--${q.panel || 'ink'}`}>
+      <p>{q.text}</p>
+    </blockquote>
+  ))}
+</div>
+
+<style>
+  .quote-card { margin: 0; }
+  .quote-card p { margin: 0; }
+</style>

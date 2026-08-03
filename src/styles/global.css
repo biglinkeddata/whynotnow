@@ -1,0 +1,411 @@
+/* ==========================================================================
+   WHY NOT NOW? — design system
+   Loud, painterly, high contrast. Ink and paper sections alternate.
+   Mobile first: base styles are the phone view.
+   ========================================================================== */
+
+:root {
+  --ink: #111111;
+  --paper: #ffffff;
+  --magenta: #e81f5c;
+  --yellow: #f2b21c;
+  --blue: #1e50b0;
+  --gold: #c99a4e;
+
+  --font-display: 'Anton', 'Arial Narrow', sans-serif;
+  --font-marker: 'Permanent Marker', cursive;
+  --font-script: 'Caveat', cursive;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --space: clamp(1rem, 4vw, 2rem);
+  --section-pad: clamp(3.5rem, 10vw, 7rem);
+  --measure: 62ch;
+
+  /* Thick outline for display type sitting on painted texture:
+     a ring of shadows, not -webkit-text-stroke (which eats thin glyphs). */
+  --outline-c: var(--ink);
+  --ow: 0.045em;
+  --od: 0.0318em; /* diagonal ≈ ow / √2 */
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: inherit; }
+p { margin: 0 0 1em; }
+p:last-child { margin-bottom: 0; }
+
+::selection { background: var(--magenta); color: var(--paper); }
+
+:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 3px;
+}
+.on-paper :focus-visible, .section--paper :focus-visible {
+  outline-color: var(--blue);
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  z-index: 100;
+  background: var(--yellow);
+  color: var(--ink);
+  padding: 0.75rem 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.skip-link:focus { left: 0; }
+
+/* --------------------------------------------------------------------------
+   Type
+   -------------------------------------------------------------------------- */
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+/* Oversized on purpose — slightly too big is the brief. */
+.display--hero  { font-size: clamp(3.4rem, 14vw, 9.5rem); }
+.display--xl    { font-size: clamp(2.6rem, 9vw, 6rem); }
+.display--lg    { font-size: clamp(2rem, 6.5vw, 4rem); }
+.display--md    { font-size: clamp(1.5rem, 4.5vw, 2.5rem); }
+
+/* Outlined display type: white fill, thick ink outline, over texture. */
+.outlined {
+  color: var(--paper);
+  text-shadow:
+    calc(var(--ow) * -1) 0 0 var(--outline-c),
+    var(--ow) 0 0 var(--outline-c),
+    0 calc(var(--ow) * -1) 0 var(--outline-c),
+    0 var(--ow) 0 var(--outline-c),
+    calc(var(--od) * -1) calc(var(--od) * -1) 0 var(--outline-c),
+    var(--od) calc(var(--od) * -1) 0 var(--outline-c),
+    calc(var(--od) * -1) var(--od) 0 var(--outline-c),
+    var(--od) var(--od) 0 var(--outline-c),
+    calc(var(--ow) * -0.92) calc(var(--od) * -0.38) 0 var(--outline-c),
+    calc(var(--ow) * 0.92) calc(var(--od) * -0.38) 0 var(--outline-c),
+    calc(var(--ow) * -0.92) calc(var(--od) * 0.38) 0 var(--outline-c),
+    calc(var(--ow) * 0.92) calc(var(--od) * 0.38) 0 var(--outline-c),
+    calc(var(--od) * -0.38) calc(var(--ow) * -0.92) 0 var(--outline-c),
+    calc(var(--od) * 0.38) calc(var(--ow) * -0.92) 0 var(--outline-c),
+    calc(var(--od) * -0.38) calc(var(--ow) * 0.92) 0 var(--outline-c),
+    calc(var(--od) * 0.38) calc(var(--ow) * 0.92) 0 var(--outline-c),
+    0 0.12em 0 var(--outline-c);
+}
+
+.marker {
+  font-family: var(--font-marker);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.script {
+  font-family: var(--font-script);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  line-height: 1.2;
+}
+
+.kicker {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Marker underline: hand-drawn swash under key words. */
+.swash {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+.swash::after {
+  content: '';
+  position: absolute;
+  left: -0.08em;
+  right: -0.12em;
+  bottom: -0.14em;
+  height: 0.22em;
+  background: url('/textures/swash-magenta.svg') no-repeat center / 100% 100%;
+  pointer-events: none;
+}
+.swash--yellow::after { background-image: url('/textures/swash-yellow.svg'); }
+
+/* --------------------------------------------------------------------------
+   Sections — big flat blocks, ink and paper alternating, no thin dividers.
+   -------------------------------------------------------------------------- */
+
+.section { padding: var(--section-pad) 0; }
+.section--ink { background: var(--ink); color: var(--paper); }
+.section--paper { background: var(--paper); color: var(--ink); }
+.section--yellow { background: var(--yellow); color: var(--ink); }
+.section--magenta { background: var(--magenta); color: var(--paper); }
+.section--blue { background: var(--blue); color: var(--paper); }
+
+.section--painted {
+  background-color: var(--ink);
+  background-image: url('/textures/paint-hero.svg');
+  background-size: cover;
+  background-position: center;
+  color: var(--paper);
+}
+.section--painted-band {
+  background-color: var(--ink);
+  background-image: url('/textures/paint-band.svg');
+  background-size: cover;
+  background-position: center;
+  color: var(--paper);
+}
+/* Small text never relies on texture alone: mute the paint further
+   wherever a painted band carries body copy (e.g. the footer). */
+.section--painted-band.texture-quiet {
+  background-image:
+    linear-gradient(rgba(17, 17, 17, 0.62), rgba(17, 17, 17, 0.62)),
+    url('/textures/paint-band.svg');
+}
+
+.wrap {
+  width: min(100% - 2 * var(--space), 72rem);
+  margin-inline: auto;
+}
+.wrap--narrow { max-width: 48rem; }
+
+/* --------------------------------------------------------------------------
+   Brush-stroke label pill
+   -------------------------------------------------------------------------- */
+
+.pill {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: url('/textures/brush-pill.svg') no-repeat center / 100% 100%;
+  padding: 0.55em 1.6em 0.7em;
+  transform: rotate(-1.2deg);
+}
+.pill--tilt-r { transform: rotate(1.1deg); }
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  border: 3px solid var(--ink);
+  padding: 0.9em 1.8em;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+  box-shadow: 0.28em 0.28em 0 var(--ink);
+}
+.btn:hover, .btn:focus-visible { transform: translate(-2px, -2px); box-shadow: 0.45em 0.45em 0 var(--ink); }
+.btn:active { transform: translate(1px, 1px); box-shadow: 0.15em 0.15em 0 var(--ink); }
+
+.btn--magenta { background: var(--magenta); color: var(--paper); }
+.btn--yellow { background: var(--yellow); color: var(--ink); }
+.btn--paper { background: var(--paper); color: var(--ink); }
+
+/* On ink backgrounds the shadow needs to read against black. */
+.section--ink .btn, .section--painted .btn, .section--painted-band .btn,
+.section--magenta .btn, .section--blue .btn {
+  border-color: var(--paper);
+  box-shadow: 0.28em 0.28em 0 rgba(255 255 255 / 0.92);
+}
+.section--ink .btn:hover, .section--painted .btn:hover,
+.section--magenta .btn:hover, .section--blue .btn:hover {
+  box-shadow: 0.45em 0.45em 0 rgba(255 255 255 / 0.92);
+}
+
+/* --------------------------------------------------------------------------
+   Star bullets
+   -------------------------------------------------------------------------- */
+
+.starlist { list-style: none; margin: 0 0 1.25em; padding: 0; }
+.starlist li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.7em;
+}
+.starlist li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.28em;
+  width: 1.15rem;
+  height: 1.15rem;
+  background: url('/textures/star.svg') no-repeat center / contain;
+}
+
+/* --------------------------------------------------------------------------
+   Quote cards — condensed caps, uneven grid
+   -------------------------------------------------------------------------- */
+
+.quotegrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+.quote-card {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  line-height: 1.02;
+  font-size: clamp(1.6rem, 5.5vw, 2.6rem);
+  padding: clamp(1.4rem, 5vw, 2.4rem);
+  display: flex;
+  align-items: flex-end;
+  min-height: 9rem;
+}
+.quote-card--ink { background: var(--ink); color: var(--paper); }
+.quote-card--yellow { background: var(--yellow); color: var(--ink); border: 3px solid var(--ink); }
+.quote-card--magenta { background: var(--magenta); color: var(--paper); }
+.quote-card--blue { background: var(--blue); color: var(--paper); }
+
+@media (min-width: 720px) {
+  .quotegrid { grid-template-columns: repeat(6, 1fr); }
+  .quote-card:nth-child(6n + 1) { grid-column: span 4; transform: rotate(-0.5deg); }
+  .quote-card:nth-child(6n + 2) { grid-column: span 2; transform: rotate(0.7deg); }
+  .quote-card:nth-child(6n + 3) { grid-column: span 2; transform: rotate(0.4deg); }
+  .quote-card:nth-child(6n + 4) { grid-column: span 4; transform: rotate(-0.6deg); }
+  .quote-card:nth-child(6n + 5) { grid-column: span 3; transform: rotate(0.5deg); }
+  .quote-card:nth-child(6n + 6) { grid-column: span 3; transform: rotate(-0.4deg); }
+}
+
+/* --------------------------------------------------------------------------
+   Forms
+   -------------------------------------------------------------------------- */
+
+.field { margin-bottom: 1.25rem; }
+.field label {
+  display: block;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.field input, .field textarea, .field select {
+  width: 100%;
+  font: inherit;
+  padding: 0.8em 1em;
+  border: 3px solid var(--ink);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+}
+.section--ink .field input, .section--ink .field textarea, .section--ink .field select {
+  border-color: var(--paper);
+}
+
+/* Email capture combo (input + button) */
+.capture-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.capture-row input {
+  flex: 1;
+  font: inherit;
+  font-size: 1.05rem;
+  padding: 0.9em 1em;
+  border: 3px solid var(--ink);
+  border-radius: 0;
+}
+@media (min-width: 560px) {
+  .capture-row { flex-direction: row; }
+}
+
+/* --------------------------------------------------------------------------
+   Cards & grids
+   -------------------------------------------------------------------------- */
+
+.cardgrid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 600px) { .cardgrid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 960px) { .cardgrid--3 { grid-template-columns: repeat(3, 1fr); } }
+
+/* Scroll-triggered fade — restrained motion, no libraries. */
+.fade-in {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+.fade-in.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { opacity: 1; transform: none; }
+}
+
+/* --------------------------------------------------------------------------
+   Audio player
+   -------------------------------------------------------------------------- */
+
+.player {
+  border: 3px solid currentColor;
+  padding: 1rem;
+  background: var(--ink); /* solid backdrop — small text never sits on texture */
+  color: var(--paper);
+}
+.player audio { width: 100%; display: block; }
+
+/* --------------------------------------------------------------------------
+   Utility
+   -------------------------------------------------------------------------- */
+
+.center { text-align: center; }
+.measure { max-width: var(--measure); }
+.mt-0 { margin-top: 0; }
+.stack > * + * { margin-top: 1.25rem; }
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.placeholder-note {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}

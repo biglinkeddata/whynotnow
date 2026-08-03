@@ -1,0 +1,20 @@
+---
+// Inline episode player. Native <audio controls> underneath = fully
+// keyboard accessible and screen-reader friendly; we only style the frame.
+const { episode, label = 'Listen now' } = Astro.props;
+---
+<div class="player" data-player>
+  <p class="player-label kicker">{label}</p>
+  <p class="player-title">{episode.title}</p>
+  <audio controls preload="none" src={episode.audioUrl}>
+    <a href={episode.audioUrl}>Download the audio</a>
+  </audio>
+  {episode.duration && <p class="player-meta">{episode.duration}</p>}
+</div>
+
+<style>
+  .player { max-width: 40rem; }
+  .player-label { color: var(--yellow); margin: 0 0 0.35rem; }
+  .player-title { font-weight: 800; font-size: 1.1rem; margin: 0 0 0.75rem; }
+  .player-meta { font-size: 0.85rem; opacity: 0.8; margin: 0.5rem 0 0; }
+</style>

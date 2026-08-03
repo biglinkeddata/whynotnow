@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import SiteForm from '../components/SiteForm.astro';
+import SocialIcons from '../components/SocialIcons.astro';
+import { site } from '../lib/content.js';
+---
+<Base
+  title="Contact — Why Not Now?"
+  description="Get in touch with the Why Not Now? podcast — questions, ideas, press and everything else."
+>
+  <section class="section section--painted-band">
+    <div class="wrap">
+      <p class="pill">Contact</p>
+      <h1 class="display display--xl outlined">Say hello</h1>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="wrap contact-grid">
+      <div>
+        <SiteForm name="contact" submitLabel="Send message">
+          <div class="field">
+            <label for="c-name">Your name</label>
+            <input id="c-name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="c-email">Email</label>
+            <input id="c-email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="c-reason">Reason for contact</label>
+            <select id="c-reason" name="reason" required>
+              <option value="">Pick one…</option>
+              <option>General hello</option>
+              <option>Guest suggestion</option>
+              <option>Sponsorship / partnership</option>
+              <option>Press / media</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="c-message">Message</label>
+            <textarea id="c-message" name="message" rows="6" required></textarea>
+          </div>
+        </SiteForm>
+      </div>
+      <aside class="contact-aside">
+        <h2 class="display display--md">Prefer email?</h2>
+        <p><a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a></p>
+        <p>Press enquiries: <a href={`mailto:${site.pressEmail}`}>{site.pressEmail}</a> — or grab the <a href="/press-kit/">press kit</a>.</p>
+        <h2 class="display display--md" style="margin-top:2rem">Find us</h2>
+        <SocialIcons />
+        <p class="script" style="margin-top:2rem; color:var(--magenta)">We read everything. Promise.</p>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .contact-grid { display: grid; gap: 3rem; }
+  @media (min-width: 900px) { .contact-grid { grid-template-columns: 1.4fr 1fr; align-items: start; } }
+  .contact-aside a { color: var(--magenta); font-weight: 600; }
+  .contact-aside h2 { margin-bottom: 0.5rem; }
+</style>

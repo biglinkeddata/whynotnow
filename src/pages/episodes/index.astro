@@ -1,0 +1,169 @@
+---
+import Base from '../../layouts/Base.astro';
+import SubscribeRow from '../../components/SubscribeRow.astro';
+import { getFeed } from '../../lib/feed.js';
+import { episodeNotes, guestById } from '../../lib/content.js';
+
+const feed = await getFeed();
+const episodes = feed.episodes;
+
+// Themes come from per-episode extras files plus feed categories.
+const withMeta = episodes.map((ep) => {
+  const notes = episodeNotes.get(ep.slug);
+  const guest = notes?.guest ? guestById.get(notes.guest) : null;
+  const themes = [...new Set([...(notes?.themes || []), ...ep.categories])];
+  return { ...ep, themes, guestName: guest?.name || '' };
+});
+const allThemes = [...new Set(withMeta.flatMap((e) => e.themes))].sort();
+const allGuests = [...new Set(withMeta.map((e) => e.guestName).filter(Boolean))].sort();
+---
+<Base
+  title="Episodes — Why Not Now?"
+  description="Every episode of Why Not Now?, the reinvention podcast with Emma Elston MBE and Chloe Everton. Listen right here — search by guest or theme."
+>
+  <section class="section section--painted-band">
+    <div class="wrap">
+      <p class="pill">The archive</p>
+      <h1 class="display display--xl outlined">Every episode</h1>
+      <p class="archive-sub">Listen right here. No app required.</p>
+    </div>
+  </section>
+
+  {episodes.length === 0 ? (
+    <section class="section section--paper">
+      <div class="wrap wrap--narrow center">
+        <h2 class="display display--lg">First episode loading…</h2>
+        <p class="measure" style="margin-inline:auto">
+          We're in the studio now. Join the newsletter and you'll hear it before anyone else.
+        </p>
+        <p style="margin-top:1.5rem"><a class="btn btn--magenta" href="/newsletter/">Be first to listen</a></p>
+      </div>
+    </section>
+  ) : (
+    <section class="section section--paper">
+      <div class="wrap">
+        <form class="filters" role="search" aria-label="Filter episodes">
+          <div class="field filter-search">
+            <label for="ep-search">Search episodes</label>
+            <input id="ep-search" type="search" placeholder="Search titles and notes…" />
+          </div>
+          <div class="field">
+            <label for="ep-guest">Guest</label>
+            <select id="ep-guest">
+              <option value="">All guests</option>
+              {allGuests.map((g) => <option value={g}>{g}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="ep-theme">Theme</label>
+            <select id="ep-theme">
+              <option value="">All themes</option>
+              {allThemes.map((t) => <option value={t}>{t}</option>)}
+            </select>
+          </div>
+        </form>
+
+        <p id="ep-count" class="kicker" role="status" aria-live="polite">{episodes.length} episodes</p>
+
+        <ol class="ep-list" role="list">
+          {withMeta.map((ep) => (
+            <li
+              class="ep-row"
+              data-title={ep.title.toLowerCase()}
+              data-text={ep.descriptionText.toLowerCase().slice(0, 2000)}
+              data-guest={ep.guestName}
+              data-themes={ep.themes.join('|')}
+            >
+              <div class="ep-row-head">
+                <p class="ep-row-meta">
+                  {ep.episodeNumber && <span class="ep-num">EP {ep.episodeNumber}</span>}
+                  {ep.date && <time datetime={ep.date}>{new Date(ep.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</time>}
+                  {ep.duration && <span>{ep.duration}</span>}
+                  {ep.guestName && <span class="ep-guest">with {ep.guestName}</span>}
+                </p>
+                <h2 class="display display--md"><a href={`/episodes/${ep.slug}/`}>{ep.title}</a></h2>
+                {ep.excerpt && <p class="ep-row-excerpt">{ep.excerpt}</p>}
+              </div>
+              <div class="player ep-row-player">
+                <audio controls preload="none" src={ep.audioUrl}>
+                  <a href={ep.audioUrl}>Download the audio</a>
+                </audio>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <p id="ep-empty" class="ep-none" hidden>Nothing matches — try clearing a filter.</p>
+      </div>
+    </section>
+  )}
+
+  <section class="section section--ink">
+    <div class="wrap">
+      <h2 class="display display--lg" style="margin-bottom:1rem">Take us with you</h2>
+      <SubscribeRow />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .archive-sub { font-size: 1.15rem; margin-top: 1rem; }
+  .filters { display: grid; gap: 0.75rem 1.25rem; margin-bottom: 1.5rem; }
+  .filters .field { margin: 0; }
+  @media (min-width: 800px) {
+    .filters { grid-template-columns: 2fr 1fr 1fr; align-items: end; }
+  }
+  .ep-list { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; gap: 1.25rem; }
+  .ep-row {
+    border: 3px solid var(--ink);
+    padding: 1.5rem;
+    display: grid;
+    gap: 1.25rem;
+  }
+  .ep-row[hidden] { display: none; }
+  @media (min-width: 900px) {
+    .ep-row { grid-template-columns: 1.4fr 1fr; align-items: center; }
+  }
+  .ep-row-meta {
+    display: flex; flex-wrap: wrap; gap: 0.9rem;
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    margin: 0 0 0.4rem;
+  }
+  .ep-num { color: var(--magenta); }
+  .ep-guest { color: var(--blue); }
+  .ep-row h2 { margin: 0 0 0.4rem; }
+  .ep-row h2 a { text-decoration: none; }
+  .ep-row h2 a:hover { color: var(--magenta); }
+  .ep-row-excerpt { margin: 0; font-size: 0.95rem; }
+  .ep-row-player { border-color: var(--ink); }
+  .ep-none { font-weight: 700; font-size: 1.1rem; }
+</style>
+
+<script>
+  const search = document.getElementById('ep-search');
+  const guestSel = document.getElementById('ep-guest');
+  const themeSel = document.getElementById('ep-theme');
+  const rows = [...document.querySelectorAll('.ep-row')];
+  const count = document.getElementById('ep-count');
+  const empty = document.getElementById('ep-empty');
+
+  function apply() {
+    const q = (search?.value || '').toLowerCase().trim();
+    const guest = guestSel?.value || '';
+    const theme = themeSel?.value || '';
+    let visible = 0;
+    for (const row of rows) {
+      const matches =
+        (!q || row.dataset.title.includes(q) || row.dataset.text.includes(q)) &&
+        (!guest || row.dataset.guest === guest) &&
+        (!theme || row.dataset.themes.split('|').includes(theme));
+      row.hidden = !matches;
+      if (matches) visible++;
+    }
+    if (count) count.textContent = `${visible} episode${visible === 1 ? '' : 's'}`;
+    if (empty) empty.hidden = visible > 0;
+  }
+  [search, guestSel, themeSel].forEach((el) => {
+    el?.addEventListener('input', apply);
+    el?.addEventListener('change', apply);
+  });
+</script>

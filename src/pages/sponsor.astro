@@ -1,0 +1,63 @@
+---
+import Base from '../layouts/Base.astro';
+import SiteForm from '../components/SiteForm.astro';
+---
+<Base
+  title="Sponsor the Podcast — Why Not Now?"
+  description="Partner with Why Not Now? and put your brand in front of women 35–60 making bold decisions about business, career, health and life."
+>
+  <section class="section section--painted">
+    <div class="wrap">
+      <p class="pill">Sponsor the podcast</p>
+      <h1 class="display display--hero outlined">Back the bold</h1>
+      <p style="font-size:1.15rem; margin-top:1.5rem; max-width:38ch">
+        Our audience is women 35–60 at the exact moment they're rethinking
+        everything — where they spend, who they trust, what comes next.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--paper fade-in">
+    <div class="wrap wrap--narrow">
+      <h2 class="display display--lg">Why <span class="swash swash--yellow">this</span> audience</h2>
+      <ul class="starlist">
+        <li><strong>Decision mode.</strong> Reinvention means new purchases: courses, tools, travel, health, finance.</li>
+        <li><strong>Trust.</strong> Two hosts who say what they think — and audiences hear the difference.</li>
+        <li><strong>More than ads.</strong> Host-read spots, series partnerships, live events and community as we grow.</li>
+      </ul>
+
+      <h2 class="display display--lg" style="margin-top:2.5rem">How it works</h2>
+      <ul class="starlist">
+        <li><strong>Tell us about your brand</strong> using the form below.</li>
+        <li><strong>We check the fit.</strong> We only take partners we'd genuinely recommend.</li>
+        <li><strong>You get the numbers.</strong> Audience, downloads and formats in our partner deck.</li>
+        <li><strong>We build it together.</strong> From a host-read spot to a full series partnership.</li>
+      </ul>
+      <p class="placeholder-note" style="margin-top:1.5rem">Audience figures land here after launch — ask and we'll share them as they come in.</p>
+    </div>
+  </section>
+
+  <section class="section section--ink fade-in">
+    <div class="wrap wrap--narrow">
+      <h2 class="display display--lg" style="margin-bottom:1.5rem">Start the conversation</h2>
+      <SiteForm name="sponsor" submitLabel="Let's talk">
+        <div class="field">
+          <label for="sp-name">Your name</label>
+          <input id="sp-name" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="sp-company">Company</label>
+          <input id="sp-company" name="company" type="text" autocomplete="organization" required />
+        </div>
+        <div class="field">
+          <label for="sp-email">Work email</label>
+          <input id="sp-email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="sp-message">What are you hoping to do?</label>
+          <textarea id="sp-message" name="message" rows="5" required></textarea>
+        </div>
+      </SiteForm>
+    </div>
+  </section>
+</Base>

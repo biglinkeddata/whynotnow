@@ -1,0 +1,45 @@
+---
+const { guest } = Astro.props;
+---
+<article class="guest-card">
+  <img src={guest.photo || '/images/placeholder-guest.svg'} alt={`Photo of ${guest.name}`} width="600" height="600" loading="lazy" />
+  <div class="guest-body">
+    <h3 class="display display--md">{guest.name}</h3>
+    <p>{guest.oneLiner}</p>
+    {guest.episodeSlug
+      ? <a class="guest-link" href={`/episodes/${guest.episodeSlug}/`}>Hear their episode<span aria-hidden="true"> →</span></a>
+      : <p class="guest-soon kicker">Episode coming soon</p>}
+  </div>
+</article>
+
+<style>
+  .guest-card {
+    background: var(--paper);
+    color: var(--ink);
+    border: 3px solid var(--ink);
+    display: flex;
+    flex-direction: column;
+  }
+  .guest-card img { aspect-ratio: 1; object-fit: cover; width: 100%; }
+  .guest-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+  }
+  .guest-body h3 { margin: 0; }
+  .guest-body p { margin: 0; font-size: 0.95rem; }
+  .guest-link {
+    margin-top: auto;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    color: var(--magenta);
+    text-decoration: none;
+    padding-top: 0.5rem;
+  }
+  .guest-link:hover { text-decoration: underline; text-decoration-thickness: 3px; }
+  .guest-soon { margin-top: auto; padding-top: 0.5rem; color: var(--blue); }
+</style>

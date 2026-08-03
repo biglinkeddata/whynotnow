@@ -1,0 +1,38 @@
+---
+// "Listen on" buttons — only platforms marked live in content/site.json.
+import { site } from '../lib/content.js';
+const platforms = [
+  ['applePodcasts', 'Apple Podcasts'],
+  ['spotify', 'Spotify'],
+  ['youtube', 'YouTube'],
+].map(([key, label]) => ({ key, label, ...(site.social[key] || {}) }))
+ .filter((p) => p.live && p.url);
+---
+{platforms.length > 0 ? (
+  <ul class="subrow" role="list">
+    {platforms.map((p) => (
+      <li><a class="btn btn--paper" href={p.url} target="_blank" rel="noopener">{p.label}</a></li>
+    ))}
+  </ul>
+) : (
+  <p class="script subrow-soon">Coming soon to Spotify, Apple Podcasts &amp; YouTube</p>
+)}
+
+<style>
+  .subrow {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .subrow .btn { font-size: 0.85rem; padding: 0.7em 1.2em; }
+  .subrow-soon {
+    color: var(--yellow);
+    margin: 0;
+    display: inline-block;
+    background: rgba(17, 17, 17, 0.85); /* stays legible over painted texture */
+    padding: 0.2em 0.6em;
+  }
+</style>
