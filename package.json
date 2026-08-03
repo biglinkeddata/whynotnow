@@ -6,11 +6,10 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "start": "node ./dist/server/entry.mjs"
+    "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/node": "^9.0.0",
+    "@astrojs/netlify": "^6.6.5",
     "astro": "^5.0.0",
     "rss-parser": "^3.13.0"
   }

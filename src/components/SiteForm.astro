@@ -1,24 +1,17 @@
 ---
-// Shared form shell for contact / guest / sponsor pages. Posts to the
-// endpoint set in content/site.json (e.g. Formspree). Until one is set,
-// the form is disabled with a clearly-marked note and an email fallback.
+// Shared form shell for contact / guest / sponsor pages.
+// Submissions are handled by Netlify Forms (registered statically in
+// public/__forms.html — keep field names in sync). If formEndpoint is
+// set in content/site.json it overrides Netlify and posts there instead.
 import { site } from '../lib/content.js';
 const { name, submitLabel = 'Send it' } = Astro.props;
-const live = Boolean(site.formEndpoint);
+const action = site.formEndpoint || '/thanks/';
 ---
-<form
-  class="site-form"
-  method="post"
-  action={live ? site.formEndpoint : undefined}
-  onsubmit={live ? undefined : 'return false'}
->
-  <input type="hidden" name="form_name" value={name} />
+<form class="site-form" method="post" action={action}>
+  <input type="hidden" name="form-name" value={name} />
+  <p class="visually-hidden" aria-hidden="true">
+    <label>Don't fill this in if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+  </p>
   <slot />
   <button class="btn btn--magenta" type="submit">{submitLabel}</button>
-  {!live && (
-    <p class="placeholder-note" style="margin-top:1rem">
-      Placeholder — set formEndpoint in content/site.json to make this form live.
-      Until then, email <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
-    </p>
-  )}
 </form>

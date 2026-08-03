@@ -10,11 +10,10 @@ mode so episode pages come live from the podcast RSS feed.
 npm install
 npm run dev        # local dev at http://localhost:4321
 npm run build      # production build to dist/
-npm run start      # run the production server (node dist/server/entry.mjs)
 ```
 
-Deploy anywhere Node runs. To deploy on Vercel/Netlify instead, swap the
-adapter in `astro.config.mjs` (`@astrojs/vercel` / `@astrojs/netlify`).
+Deploys on Netlify (`@astrojs/netlify` adapter): every push to `main`
+triggers a deploy. Pages render server-side in a Netlify Function.
 
 ## Editing the site (no code needed)
 
@@ -37,9 +36,10 @@ Everything an editor touches lives in **`/content`**:
    fetch, never an error page.)
 2. **Newsletter**: create a form in Kit (ConvertKit) and paste its form ID
    into `kitFormId`. Every email box on the site posts straight to Kit.
-3. **Forms**: point `formEndpoint` at a form service endpoint (e.g.
-   Formspree). Contact / Become a Guest / Sponsor forms all use it, each
-   tagged with a hidden `form_name` field.
+3. **Forms**: Contact / Become a Guest / Sponsor submissions arrive in
+   the Netlify dashboard under Forms (enable email notifications there
+   to get them by email). No setup needed. If you ever change a form's
+   fields, update `public/__forms.html` to match.
 4. **Socials**: flip `live: true` per platform as each account launches —
    buttons and icons appear automatically.
 5. **Imagery**: replace the marked placeholder SVGs in `public/images/`

@@ -1,0 +1,37 @@
+<!--
+  Netlify Forms registration file. The real forms are server-rendered, so
+  Netlify's build-time scanner can't see them — this static copy registers
+  each form and its fields. Field names here MUST match the live forms in
+  src/components/SiteForm.astro and the pages that use it.
+  This page is never linked to and never shown to visitors.
+-->
+<html>
+  <body style="display:none">
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" action="/thanks/">
+      <input type="hidden" name="form-name" value="contact" />
+      <input name="bot-field" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <select name="reason"></select>
+      <textarea name="message"></textarea>
+    </form>
+
+    <form name="become-a-guest" data-netlify="true" netlify-honeypot="bot-field" action="/thanks/">
+      <input type="hidden" name="form-name" value="become-a-guest" />
+      <input name="bot-field" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="links" />
+      <textarea name="story"></textarea>
+    </form>
+
+    <form name="sponsor" data-netlify="true" netlify-honeypot="bot-field" action="/thanks/">
+      <input type="hidden" name="form-name" value="sponsor" />
+      <input name="bot-field" />
+      <input type="text" name="name" />
+      <input type="text" name="company" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
+    </form>
+  </body>
+</html>
