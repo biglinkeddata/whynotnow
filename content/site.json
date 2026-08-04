@@ -7,7 +7,7 @@
   "_trailer": "Optional. Paste an embed URL for the trailer (Spotify or YouTube embed link). Leave empty to hide.",
   "trailerEmbedUrl": "",
 
-  "_kit": "Newsletter runs on Kit (ConvertKit). Paste your Kit form ID here — find it in Kit under Grow > Landing Pages & Forms > your form > Publish > HTML: it is the number in app.kit.com/forms/XXXXXXX/subscriptions.",
+  "_kit": "Newsletter runs on Kit (ConvertKit). Paste your Kit form ID here. Find it in Kit under Grow > Landing Pages & Forms > your form > Publish > HTML: it is the number in app.kit.com/forms/XXXXXXX/subscriptions.",
   "kitFormId": "",
 
   "_forms": "Contact / guest / sponsor forms are handled by Netlify Forms automatically (submissions appear under Forms in the Netlify dashboard). Leave this empty unless you want to send them somewhere else (e.g. Formspree) instead.",
@@ -27,7 +27,7 @@
     "applePodcasts": { "url": "", "live": false }
   },
 
-  "showDescriptionShort": "Why Not Now? is a weekly interview podcast about reinvention, hosted by Chloe Everton and Emma Elston MBE. Every week we meet inspiring people who chose action over waiting — stories of courage, reinvention, and the moment everything changed.",
+  "showDescriptionShort": "Why Not Now? is a weekly interview podcast about reinvention, hosted by Chloe Everton and Emma Elston MBE. Every week we meet inspiring people who chose action over waiting. Stories of courage, reinvention, and the moment everything changed.",
 
-  "showDescriptionLong": "No permission. No perfect moment. Just one question... Why Not Now? is a weekly interview podcast about reinvention, hosted by Chloe Everton and Emma Elston MBE. Every week they meet inspiring people who chose action over waiting: they started businesses, changed careers, rebuilt their health, found new purpose, crossed oceans, started again — or simply did the one thing they'd spent years telling themselves they couldn't. Real conversations: funny when life is funny, emotional when it needs to be, always honest. Because this is more than a podcast. It's the start of a movement."
+  "showDescriptionLong": "No permission. No perfect moment. Just one question... Why Not Now? is a weekly interview podcast about reinvention, hosted by Chloe Everton and Emma Elston MBE. Every week they meet inspiring people who chose action over waiting: they started businesses, changed careers, rebuilt their health, found new purpose, crossed oceans, started again, or simply did the one thing they'd spent years telling themselves they couldn't. Real conversations: funny when life is funny, emotional when it needs to be, always honest. Because this is more than a podcast. It's the start of a movement."
 }

@@ -18,8 +18,8 @@ const allThemes = [...new Set(withMeta.flatMap((e) => e.themes))].sort();
 const allGuests = [...new Set(withMeta.map((e) => e.guestName).filter(Boolean))].sort();
 ---
 <Base
-  title="Episodes — Why Not Now?"
-  description="Every episode of Why Not Now?, the reinvention podcast with Chloe Everton and Emma Elston MBE. Listen right here — search by guest or theme."
+  title="Episodes | Why Not Now?"
+  description="Every episode of Why Not Now?, the reinvention podcast with Chloe Everton and Emma Elston MBE. Listen right here and search by guest or theme."
 >
   <section class="section section--painted-band">
     <div class="wrap">
@@ -92,7 +92,7 @@ const allGuests = [...new Set(withMeta.map((e) => e.guestName).filter(Boolean))]
             </li>
           ))}
         </ol>
-        <p id="ep-empty" class="ep-none" hidden>Nothing matches — try clearing a filter.</p>
+        <p id="ep-empty" class="ep-none" hidden>Nothing matches. Try clearing a filter.</p>
       </div>
     </section>
   )}

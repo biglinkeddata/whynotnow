@@ -3,14 +3,14 @@ import Base from '../layouts/Base.astro';
 import { site, hosts } from '../lib/content.js';
 ---
 <Base
-  title="Press Kit — Why Not Now?"
-  description="Official logos, host photography, biographies and show descriptions for Why Not Now? — the reinvention podcast with Chloe Everton and Emma Elston MBE."
+  title="Press Kit | Why Not Now?"
+  description="Official logos, host photography, biographies and show descriptions for Why Not Now?, the reinvention podcast with Chloe Everton and Emma Elston MBE."
 >
   <section class="section section--painted-band">
     <div class="wrap">
       <p class="pill">Press kit</p>
       <h1 class="display display--xl outlined">Everything you need</h1>
-      <p style="margin-top:1rem; font-size:1.1rem">Writing about us? Brilliant. Take what you need — it's all approved for press use.</p>
+      <p style="margin-top:1rem; font-size:1.1rem">Writing about us? Brilliant. Take what you need. It's all approved for press use.</p>
     </div>
   </section>
 
@@ -21,8 +21,8 @@ import { site, hosts } from '../lib/content.js';
           <h2 class="display display--md"><span class="swash">Logos</span></h2>
           <div class="press-logo-preview"><img src="/images/logo-stacked.png" alt="Why Not Now! stacked logo" width="300" height="341" /></div>
           <ul class="starlist">
-            <li><a href="/images/logo-stacked.png" download>Logo — PNG (transparent background)</a></li>
-            <li><a href="/images/cover-art.jpg" download>Podcast cover art — JPG</a></li>
+            <li><a href="/images/logo-stacked.png" download>Logo (PNG, transparent background)</a></li>
+            <li><a href="/images/cover-art.jpg" download>Podcast cover art (JPG)</a></li>
           </ul>
         </section>
 
@@ -32,7 +32,7 @@ import { site, hosts } from '../lib/content.js';
             {hosts.map((h) => <img src={h.photo} alt={`Photo of ${h.name}`} width="300" height="360" loading="lazy" />)}
           </div>
           <ul class="starlist">
-            {hosts.map((h) => <li><a href={h.photo} download>{h.name} — photo</a></li>)}
+            {hosts.map((h) => <li><a href={h.photo} download>{h.name} (photo)</a></li>)}
           </ul>
         </section>
       </div>

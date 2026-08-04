@@ -1,6 +1,6 @@
 ---
 // Newsletter signup wired to Kit (ConvertKit). Posts straight to Kit's
-// form endpoint — no bespoke email store. Until a form ID is set in
+// form endpoint, no bespoke email store. Until a form ID is set in
 // content/site.json this renders a clearly-marked placeholder.
 import { site } from '../lib/content.js';
 const {
@@ -28,7 +28,7 @@ const inputId = `capture-${id}`;
       <input id={inputId} type="email" autocomplete="email" required placeholder="you@example.com" />
       <button class="btn btn--red" type="submit">Start your next chapter</button>
     </form>
-    <p class="placeholder-note">Placeholder — add your Kit form ID in content/site.json to make this live.</p>
+    <p class="placeholder-note">Placeholder. Add your Kit form ID in content/site.json to make this live.</p>
     </>
   )}
 </div>

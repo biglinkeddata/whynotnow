@@ -1,5 +1,5 @@
 {
-  "_readme": "Quote cards shown on the homepage and Our Story page. 'panel' is the card colour: ink (black), yellow, magenta or blue. Keep lines short and punchy — they are set very large.",
+  "_readme": "Quote cards shown on the homepage and Our Story page. 'panel' is the card colour: ink (black), yellow, magenta or blue. Keep lines short and punchy. They are set very large.",
   "quotes": [
     { "text": "We don't interview successful women. We uncover the moment they became them.", "panel": "ink" },
     { "text": "Courage. Clarity. Action.", "panel": "yellow" },
