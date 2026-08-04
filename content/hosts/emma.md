@@ -2,20 +2,26 @@
 name: "Emma Elston MBE"
 role: "Co-host"
 photo: "/images/emma.jpg"
-order: 1
-shortBio: "Founder, straight talker, serial reinventor. Built a business from a single idea and an overdraft, picked up an MBE along the way, and still thinks the best chapter is the next one."
+order: 2
+shortBio: "Entrepreneur, investor and business leader. Emma has spent a lifetime proving that success doesn't have a look, an age or a rulebook."
 ---
 
-<!-- PLACEHOLDER BIO — replace with Emma's approved biography. -->
+Emma has spent a lifetime proving that success doesn't have a look, an
+age or a rulebook.
 
-Emma built her business from scratch — no investors, no safety net, no
-clue what she couldn't do, which turned out to be the point. Along the
-way she picked up an MBE for services to business, and a firm belief
-that the word "later" is where good ideas go to die.
+An entrepreneur, investor and business leader, Emma has spent over 30
+years in business, building companies, backing founders and championing
+people brave enough to start.
 
-She's been the only woman in the room more times than she can count.
-She'd like that to stop being a thing. That's half the reason this
-podcast exists.
+Named Business Woman of the Year in 2012 and awarded an MBE for
+Services to Manufacturing in 2015, she's never believed you need
+permission, the perfect plan or the "right" background to build
+something extraordinary.
 
-Ask her anything. She'll tell you the truth, and it'll probably be
-funnier than you expected.
+Curious by nature and always ready for the next challenge, Emma
+believes it's never too early or too late to reinvent yourself.
+
+Through Why Not Now?, she wants to inspire more people to stop waiting,
+back themselves, and ask one simple question:
+
+Why not now?

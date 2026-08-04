@@ -224,7 +224,7 @@ p:last-child { margin-bottom: 0; }
   display: inline-block;
   font-family: var(--font-body);
   font-weight: 800;
-  font-size: 1rem;
+  font-size: 1.1rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   text-decoration: none;
@@ -238,6 +238,8 @@ p:last-child { margin-bottom: 0; }
 .btn:hover, .btn:focus-visible { transform: translate(-2px, -2px); box-shadow: 0.45em 0.45em 0 var(--ink); }
 .btn:active { transform: translate(1px, 1px); box-shadow: 0.15em 0.15em 0 var(--ink); }
 
+/* Primary CTA: simple, bold, big, BRIGHT RED (per Chloe & Emma). */
+.btn--red { background: var(--red); color: var(--paper); }
 .btn--magenta { background: var(--magenta); color: var(--paper); }
 .btn--yellow { background: var(--yellow); color: var(--ink); }
 .btn--paper { background: var(--paper); color: var(--ink); }

@@ -3,44 +3,52 @@ import Base from '../layouts/Base.astro';
 import SiteForm from '../components/SiteForm.astro';
 ---
 <Base
-  title="Sponsor the Podcast — Why Not Now?"
-  description="Partner with Why Not Now? and put your brand in front of women 35–60 making bold decisions about business, career, health and life."
+  title="Back the Bold — Sponsor Why Not Now?"
+  description="The best brands don't just buy attention. They back movements. Partner with Why Not Now? and align your brand with courage, ambition and possibility."
 >
   <section class="section section--painted">
     <div class="wrap">
       <p class="pill">Sponsor the podcast</p>
       <h1 class="display display--hero outlined">Back the bold</h1>
-      <p style="font-size:1.15rem; margin-top:1.5rem; max-width:38ch">
-        Our audience is women 35–60 at the exact moment they're rethinking
-        everything — where they spend, who they trust, what comes next.
+      <p style="font-size:1.2rem; margin-top:1.5rem; max-width:36ch">
+        <strong>The best brands don't just buy attention. They back movements.</strong>
       </p>
     </div>
   </section>
 
   <section class="section section--paper fade-in">
     <div class="wrap wrap--narrow">
-      <h2 class="display display--lg">Why <span class="swash swash--yellow">this</span> audience</h2>
+      <p>Why Not Now? is where ambitious women come to find the courage to take the
+      leap — whether that's starting a business, changing careers, rebuilding their
+      lives or simply believing in themselves again.</p>
+      <p>They're not just listening. They are joining the movement.</p>
+      <p><strong>They're making decisions.</strong></p>
+
+      <h2 class="display display--lg" style="margin-top:2.5rem">Why partner <span class="swash">with us?</span></h2>
       <ul class="starlist">
-        <li><strong>Decision mode.</strong> Reinvention means new purchases: courses, tools, travel, health, finance.</li>
-        <li><strong>Trust.</strong> Two hosts who say what they think — and audiences hear the difference.</li>
-        <li><strong>More than ads.</strong> Host-read spots, series partnerships, live events and community as we grow.</li>
+        <li><strong>Reach women in action.</strong> Our collective is actively investing
+        in their future and in the brands they trust to be part of it.</li>
+        <li><strong>Be part of the conversation.</strong> From host-read stories and
+        series partnerships to live events and community experiences, your brand
+        becomes woven into moments that matter.</li>
+        <li><strong>Build trust, not just awareness.</strong> We only partner with
+        brands we'd genuinely recommend. That's what makes our partnerships authentic
+        and effective.</li>
       </ul>
 
-      <h2 class="display display--lg" style="margin-top:2.5rem">How it works</h2>
-      <ul class="starlist">
-        <li><strong>Tell us about your brand</strong> using the form below.</li>
-        <li><strong>We check the fit.</strong> We only take partners we'd genuinely recommend.</li>
-        <li><strong>You get the numbers.</strong> Audience, downloads and formats in our partner deck.</li>
-        <li><strong>We build it together.</strong> From a host-read spot to a full series partnership.</li>
-      </ul>
-      <p class="placeholder-note" style="margin-top:1.5rem">Audience figures land here after launch — ask and we'll share them as they come in.</p>
+      <h2 class="display display--lg" style="margin-top:2.5rem">More than sponsorship</h2>
+      <p>This isn't about advertising.</p>
+      <p>It's about aligning your brand with courage, ambition and possibility.</p>
+      <p>If you believe in backing women who refuse to wait...</p>
+      <p><strong>Back the bold. Back Why Not Now?</strong></p>
+      <p style="margin-top:1.5rem"><a class="btn btn--red" href="#partner-form">Request the partner deck</a></p>
     </div>
   </section>
 
-  <section class="section section--yellow fade-in">
+  <section class="section section--yellow fade-in" id="partner-form">
     <div class="wrap wrap--narrow">
-      <h2 class="display display--lg" style="margin-bottom:1.5rem">Start the conversation</h2>
-      <SiteForm name="sponsor" submitLabel="Let's talk">
+      <h2 class="display display--lg" style="margin-bottom:1.5rem">Request the partner deck</h2>
+      <SiteForm name="sponsor" submitLabel="Request the partner deck">
         <div class="field">
           <label for="sp-name">Your name</label>
           <input id="sp-name" name="name" type="text" autocomplete="name" required />

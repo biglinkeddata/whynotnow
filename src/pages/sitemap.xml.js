@@ -2,7 +2,7 @@ import { getFeed } from '../lib/feed.js';
 
 const STATIC = [
   '', 'about/', 'episodes/', 'guests/', 'become-a-guest/',
-  'sponsor/', 'contact/', 'newsletter/', 'press-kit/',
+  'sponsor/', 'social/', 'contact/', 'newsletter/', 'press-kit/',
 ];
 
 export async function GET({ site }) {

@@ -4,9 +4,10 @@ const nav = [
   ['/', 'Home'],
   ['/episodes/', 'Episodes'],
   ['/guests/', 'Guests'],
-  ['/about/', 'About'],
+  ['/about/', 'Our Story'],
   ['/become-a-guest/', 'Be a Guest'],
   ['/sponsor/', 'Sponsor'],
+  ['/social/', 'Social'],
   ['/contact/', 'Contact'],
 ];
 const path = Astro.url.pathname;
@@ -26,7 +27,7 @@ const isCurrent = (href) => (href === '/' ? path === '/' : path.startsWith(href)
             <a href={href} aria-current={isCurrent(href) ? 'page' : undefined}>{label}</a>
           </li>
         ))}
-        <li class="nav-cta"><a class="btn btn--magenta" href="/newsletter/">Join us</a></li>
+        <li class="nav-cta"><a class="btn btn--red" href="/newsletter/">Join us</a></li>
         <li class="nav-social"><SocialIcons size={20} /></li>
       </ul>
     </nav>

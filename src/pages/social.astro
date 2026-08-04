@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import SocialIcons from '../components/SocialIcons.astro';
+import { liveSocials } from '../lib/content.js';
+const watchUrl = liveSocials.find((s) => ['instagram', 'tiktok', 'youtube'].includes(s.key))?.url;
+---
+<Base
+  title="Social — Why Not Now?"
+  description="Join Why Not Now? on your favourite platforms — the moments that matter from every episode, wherever you scroll."
+>
+  <section class="section section--painted">
+    <div class="wrap">
+      <p class="pill">Social</p>
+      <h1 class="display display--hero outlined">The moments<br />that matter</h1>
+      <p class="script" style="color:var(--magenta); margin-top:1.25rem">Join us on your favourite platforms.</p>
+    </div>
+  </section>
+
+  <section class="section section--paper fade-in">
+    <div class="wrap wrap--narrow">
+      <h2 class="display display--lg">Wherever <span class="swash">you scroll</span></h2>
+      <p>The boldest moments from every episode — the line that made us gasp, the
+      laugh that wouldn't stop, the advice you'll want to send to a friend — cut
+      into clips and posted where you already are.</p>
+      <div class="social-big"><SocialIcons size={30} /></div>
+      {watchUrl ? (
+        <p style="margin-top:2rem"><a class="btn btn--red" href={watchUrl} target="_blank" rel="noopener">Watch the moments</a></p>
+      ) : (
+        <p class="placeholder-note" style="margin-top:2rem">Clip links land here as each platform goes live — flip them on in content/site.json.</p>
+      )}
+      <p class="placeholder-note" style="margin-top:1.5rem">More platforms appear here automatically as each account goes live.</p>
+    </div>
+  </section>
+
+  <section class="section section--blue fade-in">
+    <div class="wrap wrap--narrow">
+      <h2 class="display display--lg">Don't just watch. Belong.</h2>
+      <p class="measure">The newsletter is where the movement gathers — one email a
+      week, first listen on every episode, first invite to everything we build.</p>
+      <p style="margin-top:1.5rem"><a class="btn btn--red" href="/newsletter/">Start your next chapter</a></p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .social-big { margin-top: 2rem; }
+</style>

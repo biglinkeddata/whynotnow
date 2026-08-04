@@ -48,7 +48,7 @@ const jsonLd = {
         <div class="cardgrid cardgrid--3">
           {recent.map((ep) => <EpisodeCard episode={ep} />)}
         </div>
-        <p class="section-more"><a class="btn btn--magenta" href="/episodes/">All episodes</a></p>
+        <p class="section-more"><a class="btn btn--red" href="/episodes/">Listen now</a></p>
       </div>
     </section>
     </>
@@ -61,9 +61,12 @@ const jsonLd = {
           <p class="marker hero-marker">Bold. Different. Unapologetic.</p>
           <h1 class="display display--hero outlined">Why<br />Not<br />Now?</h1>
           <p class="hero-promise">
-            A weekly podcast about reinvention with
-            <strong>Emma Elston MBE</strong> and <strong>Chloe Everton</strong>.
-            Real women. Real changes. No permission needed.
+            <strong>Every week we meet inspiring people who chose action over waiting.
+            Stories of courage. Reinvention. And the moment everything changed.</strong>
+          </p>
+          <p class="hero-hosted">
+            Hosted by <strong>Chloe Everton</strong> and <strong>Emma Elston MBE</strong>.
+            Real women. Real stories. Real change.
           </p>
           <form
             class="capture-row hero-capture"
@@ -73,9 +76,9 @@ const jsonLd = {
           >
             <label class="visually-hidden" for="hero-email">Email address</label>
             <input id="hero-email" type="email" name="email_address" autocomplete="email" required placeholder="you@example.com" />
-            <button class="btn btn--magenta" type="submit">Be first to listen</button>
+            <button class="btn btn--red" type="submit">Start your next chapter</button>
           </form>
-          <p class="script hero-script">It's not too late. It's YOUR time.</p>
+          <p class="script hero-script">No permission. No perfect moment. Just one question...</p>
         </div>
         <img class="hero-photo" src="/images/cover-art.jpg" alt="The Why Not Now! podcast cover: Emma Elston and Chloe Everton in front of an acrylic painting" width="1276" height="1271" />
       </div>
@@ -106,20 +109,24 @@ const jsonLd = {
       <div class="vibe-grid">
         <div class="measure">
           <p>
-            Every week we sit down with women who looked at the life they had and said:
-            not this. Not any more. Women who started businesses at 50, walked out of
-            careers that looked perfect on paper, took their health back, started again.
+            It's a place for people who believe life doesn't have an expiry date.
+            Every week we meet inspiring people who chose action over waiting.
           </p>
           <p>
-            It's funny when life is funny. It's emotional when it needs to be. It's
-            always honest. And it always ends the same way — with you wondering what
-            <em>your</em> next chapter looks like.
+            They started businesses. Changed careers. Rebuilt their health. Found new
+            purpose. Climbed mountains. Crossed oceans. Left relationships. Started
+            again. Or simply did the one thing they'd spent years telling themselves
+            they couldn't.
+          </p>
+          <p>
+            Every story is different. But they all begin with one simple question:
+            <strong>why not now?</strong>
           </p>
         </div>
         <ul class="starlist vibe-list">
           <li><strong>Real conversations.</strong> Nobody's polished highlight reel.</li>
           <li><strong>Bold decisions.</strong> The moment they jumped, and what happened next.</li>
-          <li><strong>Your move.</strong> Every episode ends with one thing you can do this week.</li>
+          <li><strong>Real change.</strong> Every story starts with the same question.</li>
         </ul>
       </div>
     </div>
@@ -128,7 +135,7 @@ const jsonLd = {
   <section class="section section--paper fade-in">
     <div class="wrap">
       <p class="pill pill--tilt-r">Your hosts</p>
-      <h2 class="display display--lg section-head">Emma &amp; Chloe</h2>
+      <h2 class="display display--lg section-head">Chloe &amp; Emma</h2>
       <div class="cardgrid">
         {hosts.map((h) => (
           <article class="host-card">
@@ -140,7 +147,7 @@ const jsonLd = {
           </article>
         ))}
       </div>
-      <p class="section-more"><a class="btn btn--yellow" href="/about/">The full story</a></p>
+      <p class="section-more"><a class="btn btn--red" href="/about/">Our story</a></p>
     </div>
   </section>
 
@@ -152,15 +159,28 @@ const jsonLd = {
         <div class="cardgrid cardgrid--3">
           {guests.slice(0, 3).map((g) => <GuestCard guest={g} />)}
         </div>
-        <p class="section-more"><a class="btn btn--paper" href="/guests/">Meet them all</a></p>
+        <p class="section-more"><a class="btn btn--red" href="/guests/">Meet them all</a></p>
       </div>
     </section>
   )}
 
   <section class="section section--yellow fade-in">
     <div class="wrap">
-      <p class="pill">Say it louder</p>
-      <QuoteGrid limit={launched ? 6 : 4} />
+      <p class="pill">Get clarity</p>
+      <QuoteGrid limit={launched ? 7 : 5} />
+    </div>
+  </section>
+
+  <section class="section section--magenta fade-in">
+    <div class="wrap wrap--narrow">
+      <p class="pill">Where this is going</p>
+      <h2 class="display display--lg section-head">The podcast is just the beginning.</h2>
+      <p class="measure going-copy">
+        We're building something bigger: live events, a community that champions bold
+        decisions, and partnerships with brands that believe in reinvention. If you've
+        ever thought, <em>"maybe one day,"</em> we're here to ask a different question:
+        <strong>why not now?</strong>
+      </p>
     </div>
   </section>
 
@@ -186,7 +206,7 @@ const jsonLd = {
             and what comes next. If your brand belongs in that conversation, let's talk.
           </p>
         </div>
-        <a class="btn btn--yellow" href="/sponsor/">Sponsor the podcast</a>
+        <a class="btn btn--red" href="/sponsor/">Back the bold</a>
       </div>
     </section>
   )}
@@ -212,7 +232,9 @@ const jsonLd = {
     .hero-marker { min-height: 0; padding-right: 0; font-size: 2rem; }
   }
   .hero-title { margin-top: 1rem; }
-  .hero-promise { max-width: 34ch; font-size: 1.15rem; margin: 1.5rem 0; }
+  .hero-promise { max-width: 38ch; font-size: 1.2rem; margin: 1.5rem 0 0.75rem; }
+  .hero-hosted { max-width: 38ch; margin: 0 0 1.5rem; }
+  .going-copy { font-size: 1.1rem; }
   .hero-capture { max-width: 34rem; margin-bottom: 1.25rem; }
   .hero-script { color: var(--magenta); }
   .hero-player { margin-top: 2rem; }

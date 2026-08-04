@@ -2,17 +2,20 @@
 name: "Chloe Everton"
 role: "Co-host"
 photo: "/images/chloe.jpg"
-order: 2
-shortBio: "Broadcaster, interviewer, professional asker of the question you were thinking but didn't say out loud. Knows a good story when she hears one — and how to get it told properly."
+order: 1
+shortBio: "Broadcaster. Newsreader. Sales dynamo. Interviewer. Professional asker of the question you're thinking... but haven't said out loud."
 ---
 
-<!-- PLACEHOLDER BIO — replace with Chloe's approved biography. -->
+Broadcaster. Newsreader. Sales dynamo. Interviewer. Professional asker
+of the question you're thinking... but haven't said out loud.
 
-Chloe has spent her career in front of a microphone getting people to
-say the thing they came to say — and the thing they didn't plan to.
-Sport, live television, big rooms, small rooms: she's interviewed
-people at the best and worst moments of their lives and learned that
-the honest answer is always the interesting one.
+Mum to two brilliant boys. Proud member of the LGBTQ+ community.
 
-She believes everyone has one story they've never been asked the right
-question about. On this show, she asks it.
+After more than 20 years in live television, Chloe has learnt that the
+best stories live beyond the headlines. With a natural ability to put
+people at ease, she gets beneath the surface to uncover the moments
+that changed everything.
+
+She knows a great story when she hears one.
+
+More importantly, she knows how to help people tell it.
