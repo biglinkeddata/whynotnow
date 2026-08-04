@@ -132,6 +132,11 @@ p:last-child { margin-bottom: 0; }
   line-height: 1.2;
 }
 
+/* Painted-hero subline: one consistent treatment site-wide. The block
+   wrapper keeps clear space below the outlined headline; the inner span
+   carries the ink strip. */
+.chip-line { margin: 1.5rem 0 0; }
+
 /* Script lines over painted texture sit on an ink strip, yellow text,
    like the cover art. box-decoration-break keeps the strip on each
    wrapped line. */

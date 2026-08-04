@@ -25,7 +25,7 @@ const allGuests = [...new Set(withMeta.map((e) => e.guestName).filter(Boolean))]
     <div class="wrap">
       <p class="pill">The archive</p>
       <h1 class="display display--xl outlined">Every episode</h1>
-      <p class="archive-sub"><span class="paint-chip">Listen right here. No app required.</span></p>
+      <p class="chip-line"><span class="script paint-chip">Listen right here. No app required.</span></p>
     </div>
   </section>
 
@@ -106,7 +106,6 @@ const allGuests = [...new Set(withMeta.map((e) => e.guestName).filter(Boolean))]
 </Base>
 
 <style>
-  .archive-sub { font-size: 1.15rem; margin-top: 1rem; font-weight: 800; }
   .filters { display: grid; gap: 0.75rem 1.25rem; margin-bottom: 1.5rem; }
   .filters .field { margin: 0; }
   @media (min-width: 800px) {
