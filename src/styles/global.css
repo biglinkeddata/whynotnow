@@ -135,7 +135,7 @@ p:last-child { margin-bottom: 0; }
 /* Script lines over painted texture sit on an ink strip, yellow text,
    like the cover art. box-decoration-break keeps the strip on each
    wrapped line. */
-.script-chip {
+.paint-chip {
   display: inline;
   background: var(--ink);
   color: var(--yellow);
