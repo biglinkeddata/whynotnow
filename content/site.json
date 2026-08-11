@@ -2,7 +2,7 @@
   "_readme": "EDIT THIS FILE to update the site. No code knowledge needed. Keep the quotes and commas as they are. Anything starting with an underscore is a note for you, not shown on the site.",
 
   "_rss": "Paste the podcast RSS feed URL below (from your podcast host, e.g. Buzzsprout/Acast/Spotify for Creators). While it is empty the site shows the pre-launch homepage automatically.",
-  "rssUrl": "",
+  "rssUrl": "https://anchor.fm/s/114dc8448/podcast/rss",
 
   "_trailer": "Optional. Paste an embed URL for the trailer (Spotify or YouTube embed link). Leave empty to hide.",
   "trailerEmbedUrl": "",
@@ -24,8 +24,8 @@
     "facebook": { "url": "https://www.facebook.com/WhyNotNowOfficial", "live": true },
     "linkedin": { "url": "https://www.linkedin.com/company/why-not-now-podcast", "live": true },
     "youtube": { "url": "", "live": false },
-    "spotify": { "url": "", "live": false },
-    "applePodcasts": { "url": "", "live": false }
+    "spotify": { "url": "https://open.spotify.com/show/033OFUiwQMcSvNTWhnRN0h", "live": true },
+    "applePodcasts": { "url": "https://podcasts.apple.com/us/podcast/why-not-now-the-female-entrepreneur-business-podcast/id6790369140", "live": true }
   },
 
   "showDescriptionShort": "Why Not Now? is a weekly interview podcast about reinvention, hosted by Chloe Everton and Emma Elston MBE. Every week we meet inspiring people who chose action over waiting. Stories of courage, reinvention, and the moment everything changed.",
