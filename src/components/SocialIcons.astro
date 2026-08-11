@@ -19,7 +19,11 @@ const paths = {
       <li>
         <a href={s.url} target="_blank" rel="noopener" aria-label={`Why Not Now? on ${s.label}`}>
           <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d={paths[s.key]} />
+            {s.key === 'threads' ? (
+              <text x="12" y="19" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="21" font-weight="700" fill="currentColor">@</text>
+            ) : (
+              <path d={paths[s.key]} />
+            )}
           </svg>
         </a>
       </li>

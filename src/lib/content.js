@@ -44,10 +44,11 @@ export const episodeNotes = new Map(
 // Social platforms in canonical display order, live ones only.
 const SOCIAL_META = [
   ['instagram', 'Instagram'],
+  ['threads', 'Threads'],
   ['tiktok', 'TikTok'],
-  ['youtube', 'YouTube'],
-  ['linkedin', 'LinkedIn'],
   ['facebook', 'Facebook'],
+  ['linkedin', 'LinkedIn'],
+  ['youtube', 'YouTube'],
   ['spotify', 'Spotify'],
   ['applePodcasts', 'Apple Podcasts'],
 ];

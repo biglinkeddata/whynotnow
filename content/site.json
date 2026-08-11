@@ -14,15 +14,16 @@
   "formEndpoint": "",
 
   "contactEmail": "hello@whynotnowpod.com",
-  "pressEmail": "press@whynotnowpod.com",
+  "pressEmail": "hello@whynotnowpod.com",
 
   "_social": "Set live to true as each platform launches. Buttons only appear when live is true.",
   "social": {
-    "instagram": { "url": "https://instagram.com/whynotnowpod", "live": true },
-    "tiktok": { "url": "https://tiktok.com/@whynotnowpod", "live": true },
-    "youtube": { "url": "https://youtube.com/@whynotnowpod", "live": false },
-    "linkedin": { "url": "https://linkedin.com/company/whynotnowpod", "live": false },
-    "facebook": { "url": "https://facebook.com/whynotnowpod", "live": false },
+    "instagram": { "url": "https://instagram.com/whynotnowofficial", "live": true },
+    "threads": { "url": "https://www.threads.net/@whynotnowofficial", "live": true },
+    "tiktok": { "url": "https://tiktok.com/@whynotnowpodcast", "live": true },
+    "facebook": { "url": "https://www.facebook.com/WhyNotNowOfficial", "live": true },
+    "linkedin": { "url": "https://www.linkedin.com/company/why-not-now-podcast", "live": true },
+    "youtube": { "url": "", "live": false },
     "spotify": { "url": "", "live": false },
     "applePodcasts": { "url": "", "live": false }
   },
