@@ -71,7 +71,7 @@ const jsonLd = {
           <form
             class="capture-row hero-capture"
             {...(site.kitFormId
-              ? { action: `https://app.kit.com/forms/${site.kitFormId}/subscriptions`, method: 'post', target: '_blank' }
+              ? { action: `https://app.kit.com/forms/${site.kitFormId}/subscriptions`, method: 'post' }
               : { onsubmit: 'return false' })}
           >
             <label class="visually-hidden" for="hero-email">Email address</label>

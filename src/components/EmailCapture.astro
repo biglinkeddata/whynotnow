@@ -16,7 +16,7 @@ const inputId = `capture-${id}`;
   {!compact && <h2 class="display display--md">{heading}</h2>}
   {!compact && <p class="capture-sub">{sub}</p>}
   {kitAction ? (
-    <form class="capture-row" action={kitAction} method="post" target="_blank">
+    <form class="capture-row" action={kitAction} method="post">
       <label class="visually-hidden" for={inputId}>Email address</label>
       <input id={inputId} type="email" name="email_address" autocomplete="email" required placeholder="you@example.com" />
       <button class="btn btn--red" type="submit">Start your next chapter</button>
