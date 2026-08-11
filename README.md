@@ -40,13 +40,11 @@ Everything an editor touches lives in **`/content`**:
    the Netlify dashboard under Forms (enable email notifications there
    to get them by email). No setup needed. If you ever change a form's
    fields, update `public/__forms.html` to match.
-4. **Socials**: flip `live: true` per platform as each account launches —
+4. **Socials**: flip `live: true` per platform as each account launches;
    buttons and icons appear automatically.
 5. **Imagery**: host photos, cover art and the stacked logo are the real
    Canva exports (in `public/images/`). Still placeholder: guest photos
-   (add real ones per guest in `content/guests/`) and the horizontal
-   header wordmark (`public/images/logo.svg`, drawn to match the brand —
-   swap in a real export if one is made).
+   (add real ones per guest in `content/guests/`).
 
 ## Where things live
 

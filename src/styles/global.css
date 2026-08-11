@@ -202,6 +202,17 @@ p:last-child { margin-bottom: 0; }
   background-position: center;
   color: var(--ink);
 }
+/* The transparent header floats over painted heroes; below the desktop
+   breakpoint the logo needs headroom so hero pills don't collide. */
+@media (max-width: 979px) {
+  main > .section--painted:first-child,
+  main > .section--painted-band:first-child,
+  main > :first-child > .section--painted:first-child,
+  main > :first-child > .section--painted-band:first-child {
+    padding-top: calc(var(--section-pad) + 2.5rem);
+  }
+}
+
 /* Small text never relies on texture alone: mute the paint further
    wherever a painted band carries body copy (e.g. the footer). */
 .section--painted-band.texture-quiet {

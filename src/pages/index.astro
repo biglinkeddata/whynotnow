@@ -218,23 +218,15 @@ const jsonLd = {
 </Base>
 
 <style>
-  .hero { padding-block: clamp(4rem, 12vw, 8rem); }
-  /* The marker line rides the header row, level with the floating menu button. */
-  .hero { padding-top: 0.9rem; }
+  .hero { padding-block: clamp(4rem, 12vw, 8rem); padding-top: 5.5rem; }
   .hero-marker {
-    font-size: clamp(0.95rem, 2.9vw, 1.6rem);
+    font-size: clamp(1.2rem, 3.6vw, 2rem);
     color: var(--ink);
-    min-height: 3rem;
-    display: flex;
-    align-items: center;
-    margin: 0 0 clamp(1.5rem, 5vw, 3rem);
-    padding-right: 4rem; /* clear the menu button */
+    margin: 0 0 0.5rem;
     transform: rotate(-1deg);
   }
   @media (min-width: 980px) {
-    /* Desktop header is a row of text links, so the marker drops below it. */
     .hero { padding-top: 6rem; }
-    .hero-marker { min-height: 0; padding-right: 0; font-size: 2rem; }
   }
   .hero-title { margin-top: 1rem; }
   .hero-promise { max-width: 38ch; font-size: 1.35rem; margin: 1.5rem 0 0.75rem; }
