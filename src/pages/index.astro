@@ -61,13 +61,18 @@ const jsonLd = {
           <p class="marker hero-marker">Bold. Different. Unapologetic.</p>
           <h1 class="display display--hero outlined">Why<br />Not<br />Now?</h1>
           <p class="hero-promise">
-            <strong>Every week we meet inspiring people who chose action over waiting.
-            Stories of courage. Reinvention. And the moment everything changed.</strong>
+            <strong>A podcast. A mindset. A movement.</strong>
           </p>
           <p class="hero-hosted">
             Hosted by <strong>Chloe Everton</strong> and <strong>Emma Elston MBE</strong>.
             Real women. Real stories. Real change.
           </p>
+          <div class="hero-copy">
+            <p>For women who know there's more and are ready to go after it.</p>
+            <p>Bold leaps, brave reinventions and the moments that changed everything.</p>
+            <p>Because the perfect time doesn't exist. Permission isn't coming.
+            And "one day" isn't a plan.</p>
+          </div>
           <form
             class="capture-row hero-capture"
             {...(site.kitFormId
@@ -78,7 +83,7 @@ const jsonLd = {
             <input id="hero-email" type="email" name="email_address" autocomplete="email" required placeholder="you@example.com" />
             <button class="btn btn--red" type="submit">Start your next chapter</button>
           </form>
-          <p class="chip-line"><span class="script paint-chip">No permission. No perfect moment. Just one question...</span></p>
+          <p class="chip-line"><span class="script paint-chip">Stop waiting. Start backing yourself.</span></p>
         </div>
         <img class="hero-photo" src="/images/cover-art.jpg" alt="The Why Not Now! podcast cover: Emma Elston and Chloe Everton in front of an acrylic painting" width="1276" height="1271" />
       </div>
@@ -232,8 +237,10 @@ const jsonLd = {
     .hero-marker { min-height: 0; padding-right: 0; font-size: 2rem; }
   }
   .hero-title { margin-top: 1rem; }
-  .hero-promise { max-width: 38ch; font-size: 1.2rem; margin: 1.5rem 0 0.75rem; }
-  .hero-hosted { max-width: 38ch; margin: 0 0 1.5rem; }
+  .hero-promise { max-width: 38ch; font-size: 1.35rem; margin: 1.5rem 0 0.75rem; }
+  .hero-hosted { max-width: 38ch; margin: 0 0 0.75rem; }
+  .hero-copy { max-width: 44ch; margin-bottom: 1.5rem; }
+  .hero-copy p { margin-bottom: 0.5em; font-weight: 600; }
   .going-copy { font-size: 1.1rem; }
   .hero-capture { max-width: 34rem; margin-bottom: 1.25rem; }
   .hero-player { margin-top: 2rem; }
