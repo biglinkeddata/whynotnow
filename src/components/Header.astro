@@ -115,11 +115,16 @@ const isCurrent = (href) => (href === '/' ? path === '/' : path.startsWith(href)
   @media (min-width: 980px) {
     .nav-toggle { display: none; }
     .site-nav { display: block; }
-    .site-nav ul { flex-direction: row; align-items: center; gap: 0.25rem; }
-    .site-nav a:not(.btn) { font-size: 0.98rem; padding: 0.5rem 0.7rem; }
-    .nav-cta { margin: 0 0 0 0.5rem; }
-    .nav-cta .btn { padding: 0.55em 1.1em; font-size: 0.85rem; }
+    .site-nav ul { flex-direction: row; align-items: center; gap: 0.1rem; }
+    .site-nav a:not(.btn) { font-size: 0.9rem; padding: 0.5rem 0.45rem; white-space: nowrap; }
+    .nav-cta { margin: 0 0 0 0.4rem; }
+    .nav-cta .btn { padding: 0.55em 1em; font-size: 0.85rem; white-space: nowrap; }
     .nav-social { display: none; } /* icons live in the footer on desktop */
+    .logo-link img { width: clamp(160px, 18vw, 210px); }
+  }
+  @media (min-width: 1240px) {
+    .site-nav ul { gap: 0.25rem; }
+    .site-nav a:not(.btn) { font-size: 0.98rem; padding: 0.5rem 0.7rem; }
   }
 </style>
 
