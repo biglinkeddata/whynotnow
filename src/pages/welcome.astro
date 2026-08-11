@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import SocialIcons from '../components/SocialIcons.astro';
+---
+<Base
+  title="You're in | Why Not Now?"
+  description="Subscription confirmed. Welcome to the movement."
+>
+  <section class="section section--painted" style="min-height:60vh; display:grid; align-items:center">
+    <div class="wrap center">
+      <h1 class="display display--hero outlined">You're in.</h1>
+      <p class="chip-line" style="margin-bottom:1rem"><span class="script paint-chip">Officially part of the movement. It suits you.</span></p>
+      <p style="max-width:44ch; margin:0 auto 1.5rem; font-weight:600">One email a week from Chloe and Emma. First listen on every episode, first invite to everything we build.</p>
+      <a class="btn btn--red" href="/">Back to the show</a>
+      <div style="margin-top:2rem; display:flex; justify-content:center"><SocialIcons /></div>
+    </div>
+  </section>
+</Base>
