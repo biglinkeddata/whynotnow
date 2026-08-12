@@ -1,0 +1,233 @@
+# Pages CMS configuration (https://pagescms.org)
+# Edit the site at https://app.pagescms.org — sign in with GitHub, pick this
+# repo, and everything below appears as friendly editing forms. Every save
+# commits to GitHub and the site redeploys automatically (~2 minutes).
+
+media:
+  input: public/images
+  output: /images
+
+content:
+  - name: guests
+    label: Guests
+    type: collection
+    path: content/guests
+    view:
+      fields: [name, oneLiner, order, draft]
+      sort: [order, name]
+    fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: oneLiner
+        label: One-liner
+        type: string
+        description: One punchy line about their reinvention, shown on their card.
+      - name: photo
+        label: Photo
+        type: image
+        description: Square-ish photos look best. Upload into the guests folder.
+      - name: episodeSlug
+        label: Episode link
+        type: string
+        description: "The ending of their episode's web address, e.g. why-not-now-trailer-ft-juliet-barratt-grenade-rebecca-mccann-pro-blo. Leave empty until their episode is out and the card will say 'Episode coming soon'."
+      - name: themes
+        label: Themes
+        type: select
+        list: true
+        options:
+          values: [Business, Career, Health, Relationships, Life, Starting over]
+      - name: order
+        label: Order
+        type: number
+        description: Lower numbers appear first on the guests page.
+      - name: draft
+        label: Hide from the site
+        type: boolean
+        default: true
+        description: Switch off to publish this guest.
+      - name: body
+        label: Biography
+        type: rich-text
+        description: Two or three short paragraphs. Appears on their episode page.
+
+  - name: episode-notes
+    label: Episode extras
+    type: collection
+    path: content/episode-notes
+    view:
+      fields: [episodeSlug, guest]
+    fields:
+      - name: episodeSlug
+        label: Episode
+        type: string
+        required: true
+        description: "The ending of the episode's web address on the site, e.g. why-not-now-trailer-ft-juliet-barratt-grenade-rebecca-mccann-pro-blo. Episode titles and audio come from the podcast feed automatically; this file adds the extras to that episode's page."
+      - name: guest
+        label: Guest
+        type: string
+        description: The guest's filename from the Guests section, without .md (e.g. jane-smith).
+      - name: themes
+        label: Themes
+        type: select
+        list: true
+        options:
+          values: [Business, Career, Health, Relationships, Life, Starting over]
+      - name: takeaways
+        label: Key takeaways
+        type: string
+        list: true
+        description: Short punchy lines, one per box.
+      - name: links
+        label: Links from this episode
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Label
+            type: string
+          - name: url
+            label: Web address
+            type: string
+      - name: body
+        label: Extra notes
+        type: rich-text
+        description: Optional. Shown under the show notes from the feed.
+
+  - name: hosts
+    label: Hosts
+    type: collection
+    path: content/hosts
+    view:
+      fields: [name, order]
+    fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: role
+        label: Role
+        type: string
+      - name: photo
+        label: Photo
+        type: image
+      - name: order
+        label: Order
+        type: number
+        description: Lower numbers appear first.
+      - name: shortBio
+        label: Short bio
+        type: text
+        description: One or two sentences for the homepage card.
+      - name: body
+        label: Full biography
+        type: rich-text
+        description: Appears on the Our Story page.
+
+  - name: quotes
+    label: Quote cards
+    type: file
+    path: content/quotes.json
+    fields:
+      - name: quotes
+        label: Quotes
+        type: object
+        list: true
+        fields:
+          - name: text
+            label: Quote
+            type: text
+            description: Keep it short and punchy. It is set very large.
+          - name: panel
+            label: Card colour
+            type: select
+            options:
+              values: [ink, yellow, magenta, blue]
+
+  - name: settings
+    label: Site settings
+    type: file
+    path: content/site.json
+    fields:
+      - name: rssUrl
+        label: Podcast RSS feed URL
+        type: string
+        description: Everything episode-related comes from this feed. Only change it if the podcast moves to a different host.
+      - name: trailerEmbedUrl
+        label: Trailer embed URL
+        type: string
+        description: Optional Spotify or YouTube embed link, shown on the homepage before launch.
+      - name: kitFormId
+        label: Kit (ConvertKit) form ID
+        type: string
+        description: The number from your Kit form's address. Powers every newsletter signup box.
+      - name: formEndpoint
+        label: Form endpoint override
+        type: string
+        description: Leave empty. Contact/guest/sponsor forms are handled by Netlify automatically.
+      - name: contactEmail
+        label: Contact email
+        type: string
+      - name: pressEmail
+        label: Press email
+        type: string
+      - name: showDescriptionShort
+        label: Show description (short)
+        type: text
+      - name: showDescriptionLong
+        label: Show description (long)
+        type: text
+      - name: social
+        label: Social platforms
+        type: object
+        description: Buttons appear on the site only when a platform is switched to live.
+        fields:
+          - name: instagram
+            label: Instagram
+            type: object
+            fields:
+              - { name: url, label: URL, type: string }
+              - { name: live, label: Live, type: boolean }
+          - name: threads
+            label: Threads
+            type: object
+            fields:
+              - { name: url, label: URL, type: string }
+              - { name: live, label: Live, type: boolean }
+          - name: tiktok
+            label: TikTok
+            type: object
+            fields:
+              - { name: url, label: URL, type: string }
+              - { name: live, label: Live, type: boolean }
+          - name: facebook
+            label: Facebook
+            type: object
+            fields:
+              - { name: url, label: URL, type: string }
+              - { name: live, label: Live, type: boolean }
+          - name: linkedin
+            label: LinkedIn
+            type: object
+            fields:
+              - { name: url, label: URL, type: string }
+              - { name: live, label: Live, type: boolean }
+          - name: youtube
+            label: YouTube
+            type: object
+            fields:
+              - { name: url, label: URL, type: string }
+              - { name: live, label: Live, type: boolean }
+          - name: spotify
+            label: Spotify
+            type: object
+            fields:
+              - { name: url, label: URL, type: string }
+              - { name: live, label: Live, type: boolean }
+          - name: applePodcasts
+            label: Apple Podcasts
+            type: object
+            fields:
+              - { name: url, label: URL, type: string }
+              - { name: live, label: Live, type: boolean }

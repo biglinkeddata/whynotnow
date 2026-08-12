@@ -17,7 +17,14 @@ triggers a deploy. Pages render server-side in a Netlify Function.
 
 ## Editing the site (no code needed)
 
-Everything an editor touches lives in **`/content`**:
+**The easy way: [app.pagescms.org](https://app.pagescms.org).** Sign in
+with a GitHub account that has access to this repo and you get friendly
+editing forms for guests, episode extras, hosts, quote cards and site
+settings, with photo uploads built in. Every save publishes to the live
+site in about two minutes. The forms are defined in `.pages.yml`.
+
+Under the hood (and for anyone who prefers editing files directly),
+everything an editor touches lives in **`/content`**:
 
 | File | What it controls |
 | --- | --- |
