@@ -6,9 +6,7 @@ themes:
   - Business
   - Starting over
 order: 1
-draft: true
+draft: false
 ---
-
-
 PLACEHOLDER biography. Two or three short paragraphs about who this
 guest is, what they walked away from, and what they built instead.
