@@ -1,0 +1,35 @@
+---
+// Full-screen holding page, shown on every route while holdingPage is
+// true in content/site.json. Collects newsletter signups so the list
+// grows before launch.
+import EmailCapture from './EmailCapture.astro';
+import SocialIcons from './SocialIcons.astro';
+---
+<main class="holding section--painted">
+  <div class="wrap holding-inner">
+    <p class="pill">Coming soon</p>
+    <h1 class="display display--hero outlined">Why<br />Not<br />Now?</h1>
+    <p class="chip-line"><span class="script paint-chip">A podcast. A mindset. A movement.</span></p>
+    <p class="holding-copy">
+      Hosted by <strong>Chloe Everton</strong> and <strong>Emma Elston MBE</strong>.
+      Real women. Real stories. Real change. Be first to hear it:
+    </p>
+    <div class="holding-capture">
+      <EmailCapture id="holding" compact />
+    </div>
+    <div class="holding-social"><SocialIcons /></div>
+  </div>
+</main>
+
+<style>
+  .holding {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: grid;
+    align-items: center;
+    padding: 3rem 0;
+  }
+  .holding-copy { max-width: 40ch; font-weight: 600; margin: 1.25rem 0 1.5rem; }
+  .holding-capture { max-width: 34rem; }
+  .holding-social { margin-top: 2rem; }
+</style>

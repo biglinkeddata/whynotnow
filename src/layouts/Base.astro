@@ -1,7 +1,15 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import HoldingPage from '../components/HoldingPage.astro';
+import { site } from '../lib/content.js';
 import '../styles/global.css';
+
+// Holding-page mode: while holdingPage is true in content/site.json,
+// every route shows the holding screen. The newsletter thank-you pages
+// stay live so Kit's signup redirects keep working before launch.
+const HOLDING_EXEMPT = ['/subscribed/', '/welcome/'];
+const holding = site.holdingPage && !HOLDING_EXEMPT.includes(Astro.url.pathname);
 
 const {
   title = 'Why Not Now? | The reinvention podcast with Chloe Everton & Emma Elston MBE',
@@ -43,15 +51,22 @@ const ogImageUrl = new URL(ogImage, Astro.site);
       href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@600&family=Inter:wght@400;600;700;800&family=Permanent+Marker&display=swap"
     />
 
+    {holding && <meta name="robots" content="noindex" />}
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <Header />
-    <main id="main">
-      <slot />
-    </main>
-    <Footer />
+    {holding ? (
+      <HoldingPage />
+    ) : (
+      <>
+        <a class="skip-link" href="#main">Skip to content</a>
+        <Header />
+        <main id="main">
+          <slot />
+        </main>
+        <Footer />
+      </>
+    )}
 
     <script>
       // Restrained motion: fade sections in as they enter the viewport.

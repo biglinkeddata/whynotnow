@@ -1,6 +1,9 @@
 {
   "_readme": "EDIT THIS FILE to update the site. No code knowledge needed. Keep the quotes and commas as they are. Anything starting with an underscore is a note for you, not shown on the site.",
 
+  "_holding": "While true, every page shows the coming-soon holding screen (newsletter signups still work). Set to false on launch day to reveal the full site.",
+  "holdingPage": true,
+
   "_rss": "Paste the podcast RSS feed URL below (from your podcast host, e.g. Buzzsprout/Acast/Spotify for Creators). While it is empty the site shows the pre-launch homepage automatically.",
   "rssUrl": "https://anchor.fm/s/114dc8448/podcast/rss",
 

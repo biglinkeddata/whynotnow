@@ -150,6 +150,10 @@ content:
     type: file
     path: content/site.json
     fields:
+      - name: holdingPage
+        label: Holding page mode
+        type: boolean
+        description: While on, every visitor sees the coming-soon screen (newsletter signups still work). Switch off on launch day to reveal the full site.
       - name: rssUrl
         label: Podcast RSS feed URL
         type: string
