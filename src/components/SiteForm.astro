@@ -1,11 +1,15 @@
 ---
 // Shared form shell for contact / guest / sponsor pages.
 // Submissions are handled by Netlify Forms (registered statically in
-// public/__forms.html; keep field names in sync). If formEndpoint is
-// set in content/site.json it overrides Netlify and posts there instead.
+// public/__forms.html; keep field names in sync). The action MUST be a
+// statically-served path: Netlify only intercepts form posts before
+// they reach the SSR function, so posting to a server-rendered page
+// returns 403. The registered forms in __forms.html carry
+// action="/thanks/", which Netlify uses for the post-submit redirect.
+// If formEndpoint is set in content/site.json it overrides Netlify.
 import { site } from '../lib/content.js';
 const { name, submitLabel = 'Send it' } = Astro.props;
-const action = site.formEndpoint || '/thanks/';
+const action = site.formEndpoint || '/__forms.html';
 ---
 <form class="site-form" method="post" action={action}>
   <input type="hidden" name="form-name" value={name} />
