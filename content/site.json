@@ -27,7 +27,7 @@
     "facebook": { "url": "https://www.facebook.com/WhyNotNowOfficial", "live": true },
     "linkedin": { "url": "https://www.linkedin.com/company/why-not-now-podcast", "live": true },
     "youtube": { "url": "", "live": false },
-    "spotify": { "url": "https://open.spotify.com/show/0RgqqcMIDrREffkLXKajJp", "live": false },
+    "spotify": { "url": "https://open.spotify.com/show/5a4P14l6fBPeacxLRc9Ayi", "live": true },
     "applePodcasts": { "url": "", "live": false }
   },
 
