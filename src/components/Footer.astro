@@ -33,7 +33,7 @@ const year = new Date().getFullYear();
 </footer>
 
 <style>
-  .site-footer { padding: var(--section-pad) 0 2.5rem; }
+  .site-footer { padding: var(--section-pad) 0 calc(2.5rem + env(safe-area-inset-bottom, 0px)); }
   .footer-tag { color: var(--magenta); margin-bottom: 1.5rem; }
   .footer-grid { display: grid; gap: 2.5rem; }
   .footer-nav ul {

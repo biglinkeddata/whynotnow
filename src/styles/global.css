@@ -202,14 +202,21 @@ p:last-child { margin-bottom: 0; }
   background-position: center;
   color: var(--ink);
 }
-/* The transparent header floats over painted heroes; below the desktop
-   breakpoint the logo needs headroom so hero pills don't collide. */
+/* The transparent header floats over painted heroes; heroes carry extra
+   headroom so hero pills don't collide with it. The safe-area inset keeps
+   pace with the header shifting down under iOS 26's floating browser bar. */
+main > .section--painted:first-child,
+main > .section--painted-band:first-child,
+main > :first-child > .section--painted:first-child,
+main > :first-child > .section--painted-band:first-child {
+  padding-top: calc(var(--section-pad) + env(safe-area-inset-top, 0px));
+}
 @media (max-width: 979px) {
   main > .section--painted:first-child,
   main > .section--painted-band:first-child,
   main > :first-child > .section--painted:first-child,
   main > :first-child > .section--painted-band:first-child {
-    padding-top: calc(var(--section-pad) + 2.5rem);
+    padding-top: calc(var(--section-pad) + 2.5rem + env(safe-area-inset-top, 0px));
   }
 }
 

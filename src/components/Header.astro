@@ -59,6 +59,9 @@ const isCurrent = (href) => (href === '/' ? path === '/' : path.startsWith(href)
     background: transparent;
     color: var(--ink);
     z-index: 20;
+    /* iOS 26 floats the browser's address bar over the page; the inset
+       reports the overlap (0 in browsers that don't overlay). */
+    padding-top: env(safe-area-inset-top, 0px);
   }
   .bar {
     display: flex;
