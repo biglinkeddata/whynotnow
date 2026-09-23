@@ -28,7 +28,7 @@
     "linkedin": { "url": "https://www.linkedin.com/company/why-not-now-podcast", "live": true },
     "youtube": { "url": "https://www.youtube.com/@whynotnowpod", "live": true },
     "spotify": { "url": "https://open.spotify.com/show/5a4P14l6fBPeacxLRc9Ayi", "live": true },
-    "applePodcasts": { "url": "", "live": false }
+    "applePodcasts": { "url": "https://podcasts.apple.com/gb/podcast/why-not-now-podcast/id6812519600", "live": true }
   },
 
   "showDescriptionShort": "Why Not Now? is a weekly interview podcast about reinvention, hosted by Chloe Everton and Emma Elston MBE. Every week we meet inspiring people who chose action over waiting. Stories of courage, reinvention, and the moment everything changed.",
